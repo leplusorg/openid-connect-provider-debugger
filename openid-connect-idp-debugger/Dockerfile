@@ -1,8 +1,4 @@
-FROM openresty/openresty
-
-RUN apt-get update \
- && apt-get -y upgrade \
- && apt-get -y upgrade
+FROM openresty/openresty:alpine
 
 RUN opm install bungle/lua-resty-session \
  && opm install cdbattags/lua-resty-jwt \
