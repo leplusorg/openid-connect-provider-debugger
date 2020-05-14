@@ -1,10 +1,15 @@
---- nginx.conf	2020-05-14 13:27:29.168451660 -0700
-+++ nginx.conf	2020-05-14 13:28:29.583197857 -0700
-@@ -19,6 +19,8 @@
+--- /usr/local/openresty/nginx/conf/nginx.conf	2020-05-14 13:27:29.168451660 -0700
++++ /usr/local/openresty/nginx/conf/nginx.conf	2020-05-14 13:28:29.583197857 -0700
+@@ -19,6 +19,13 @@
  #user  nobody;
  worker_processes  1;
  
 +error_log /dev/stderr debug;
++
++env OIDC_CLIENT_ID;
++env OIDC_CLIENT_SECRET;
++env OIDC_DISCOVERY;
++env OIDC_REDIRECT_URI;
 +
  #error_log  logs/error.log;
  #error_log  logs/error.log  notice;
