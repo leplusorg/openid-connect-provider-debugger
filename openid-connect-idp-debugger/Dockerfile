@@ -4,10 +4,9 @@ RUN apt-get update \
  && apt-get -y upgrade \
  && apt-get -y upgrade
 
-RUN opm install \
-    bungle/lua-resty-session
-    cdbattags/lua-resty-jwt \
-    ledgetech/lua-resty-http \
-    zmartzone/lua-resty-openidc \
+RUN opm install bungle/lua-resty-session \
+ && opm install cdbattags/lua-resty-jwt \
+ && opm install ledgetech/lua-resty-http \
+ && opm install zmartzone/lua-resty-openidc
 
 EXPOSE 80 443
