@@ -1,7 +1,7 @@
 FROM openresty/openresty:alpine
 
 RUN apk update \
- && apk add wget \
+ && apk add perl \
  && rm -rf /var/cache/apk/*
 
 RUN opm install bungle/lua-resty-session \
