@@ -1,0 +1,10 @@
+FROM openresty/openresty
+
+RUN apt-get update \
+ && apt-get -y upgrade
+
+RUN luarocks install lua-resty-http \
+ && luarocks install lua-resty-jwt \
+ && luarocks install lua-resty-openidc \
+ && luarocks install lua-resty-session
+
