@@ -11,6 +11,8 @@ Also typically your IdP will ask you to provide the Reidrect URI it should accep
 
 Once your have provided and gathered the above information, simply run the following docker command:
 
-```docker run --rm -i -p 8080:80 -e 'OIDC_REDIRECT_URI=http://localhost:8080/login' -e 'OIDC_DISCOVERY=<discovery_url>' -e 'OIDC_CLIENT_ID=<client_secret>' -e 'OIDC_CLIENT_SECRET=<client_id>' -e 'OIDC_SSL_VERIFY=no' thomasleplus/openid-connect-idp-debugger```
+```
+docker run --rm -i -p 8080:80 -e 'OIDC_REDIRECT_URI=http://localhost:8080/login' -e 'OIDC_DISCOVERY=<discovery_url>' -e 'OIDC_CLIENT_ID=<client_secret>' -e 'OIDC_CLIENT_SECRET=<client_id>' -e 'OIDC_SSL_VERIFY=no' thomasleplus/openid-connect-idp-debugger
+```
 
 Finally open http://localhost:8080 in your favorite browser and you should be redirected to your IdP to begin the authentication flow. Remember that if you are already signed in, you may go through the authentication without any prompt. If you authenticate succesfully, you should see a JSON document containing all the information received by the debugger from the IdP. You can find more details in the logs printed by the docker container.
