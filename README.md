@@ -19,6 +19,6 @@ docker run -i -e 'OIDC_CLIENT_ID=<client_secret>' -e 'OIDC_CLIENT_SECRET=<client
 
 Finally open http://localhost:8080 in your favorite browser and you should be redirected to your IdP to begin the authentication flow. Remember that if you are already signed in, you may go through the authentication without any prompt. If you authenticate succesfully, you should see a JSON document containing all the information received by the debugger from the IdP. You can find more details in the logs printed by the docker container.
 
-## Credit
+## Credits
 
 This project is based on NGINX / OpenResty and all the actual OpenID Connect implemention comes from https://github.com/zmartzone/lua-resty-openidc.
