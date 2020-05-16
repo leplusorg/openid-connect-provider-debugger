@@ -114,3 +114,5 @@ This project is based on NGINX / OpenResty and all the actual OpenID Connect imp
 ## Alternatives
 
 If all you need is to do a simple test and you do not need to see the details of each HTTP request and response, you can use this online OIDC deubgger: https://oidcdebugger.com. Its source code is available at https://github.com/nbarbettini/oidc-debugger.
+
+Another alternative are the official OpenID Foundation certification tests that can be run online at https://op.certification.openid.net:60000 and https://rp.certification.openid.net:8080, the source code being available at https://github.com/openid-certification/oidctest.
