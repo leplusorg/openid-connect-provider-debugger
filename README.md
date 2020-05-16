@@ -24,7 +24,37 @@ Once your have provided and gathered the above information, simply run the follo
 docker run -i -e 'OIDC_CLIENT_ID=<client_secret>' -e 'OIDC_CLIENT_SECRET=<client_id>' -e 'OIDC_DISCOVERY=<discovery_url>' -e 'OIDC_REDIRECT_URI=http://localhost:8080/login' -p 8080:80 thomasleplus/openid-connect-provider-debugger
 ```
 
-Finally open http://localhost:8080 in your favorite browser and you should be redirected to your OP to begin the authentication flow. Remember that if you are already signed in, you may go through the authentication without any prompt. If you authenticate succesfully, you should see a JSON document containing all the information received by the debugger from the OP. You can find more details in the logs printed by the docker container.
+Finally open http://localhost:8080 in your favorite browser and you should be redirected to your OP to begin the authentication flow. Remember that if you are already signed in, you may go through the authentication without any prompt. If you authenticate succesfully, you should see a JSON document containing all the information received by the debugger from the OP. You can find more details (including the raw tokens) in the logs printed by the docker container.
+
+A successful sign in would result in the display of a JSON document like this one:
+```
+{
+	"id_token": {
+		"azp": "debugger",
+		"iat": 1589647290,
+		"iss": "http:\/\/192.168.1.10:8081\/auth\/realms\/master",
+		"aud": "debugger",
+		"nonce": "82efa38c4a21df2069ab898fdf6e91ea",
+		"exp": 1589647350,
+		"jti": "cbd96855-59e3-446d-af6e-dda62093716d",
+		"sub": "138c94bc-e73b-40a2-93c5-547f16200b01",
+		"email_verified": false,
+		"acr": "1",
+		"preferred_username": "tom",
+		"auth_time": 1589647290,
+		"session_state": "49cdc3ed-61dc-4d05-be78-3ca23727c35d",
+		"typ": "ID"
+	},
+	"user": {
+		"email_verified": false,
+		"preferred_username": "tom",
+		"sub": "138c94bc-e73b-40a2-93c5-547f16200b01"
+	},
+	"access_token": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJESXl1cmFIN3VUYVpXQ1I4SWRfWHdwd2FaZmFod2I5TDRaRkg1U3VlYmw0In0.eyJleHAiOjE1ODk2NDczNTAsImlhdCI6MTU4OTY0NzI5MCwiYXV0aF90aW1lIjoxNTg5NjQ3MjkwLCJqdGkiOiJkZTA2ZTcxYi1lMGZmLTQ2NWUtYWZlOS0wODRiN2M1MzI4NGIiLCJpc3MiOiJodHRwOi8vMTkyLjE2OC4xLjEwOjgwODEvYXV0aC9yZWFsbXMvbWFzdGVyIiwiYXVkIjpbIm1hc3Rlci1yZWFsbSIsImFjY291bnQiXSwic3ViIjoiMTM4Yzk0YmMtZTczYi00MGEyLTkzYzUtNTQ3ZjE2MjAwYjAxIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiZGVidWdnZXIiLCJub25jZSI6IjgyZWZhMzhjNGEyMWRmMjA2OWFiODk4ZmRmNmU5MWVhIiwic2Vzc2lvbl9zdGF0ZSI6IjQ5Y2RjM2VkLTYxZGMtNGQwNS1iZTc4LTNjYTIzNzI3YzM1ZCIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiY3JlYXRlLXJlYWxtIiwib2ZmbGluZV9hY2Nlc3MiLCJhZG1pbiIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsibWFzdGVyLXJlYWxtIjp7InJvbGVzIjpbInZpZXctaWRlbnRpdHktcHJvdmlkZXJzIiwidmlldy1yZWFsbSIsIm1hbmFnZS1pZGVudGl0eS1wcm92aWRlcnMiLCJpbXBlcnNvbmF0aW9uIiwiY3JlYXRlLWNsaWVudCIsIm1hbmFnZS11c2VycyIsInF1ZXJ5LXJlYWxtcyIsInZpZXctYXV0aG9yaXphdGlvbiIsInF1ZXJ5LWNsaWVudHMiLCJxdWVyeS11c2VycyIsIm1hbmFnZS1ldmVudHMiLCJtYW5hZ2UtcmVhbG0iLCJ2aWV3LWV2ZW50cyIsInZpZXctdXNlcnMiLCJ2aWV3LWNsaWVudHMiLCJtYW5hZ2UtYXV0aG9yaXphdGlvbiIsIm1hbmFnZS1jbGllbnRzIiwicXVlcnktZ3JvdXBzIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0b20ifQ.NdRCOPxGzJvZYhbfcm7dTrsbcQ4AtsO17hUUDWwdYWEr7lHp4z-b-_xkEUiaAub-JCDpb5EO2EVFl3BaoZZc8eEsdXRQIRrBj-TYVFtcgd362MnZMORuXuP-7YbUsoNeAhAzBTVoDLJVXxK30yMN3vY9JOpxWLm8xxGGbY3QA7ciPq5J_phKjMal9kT-gZaSNMutPwpiR3paKGcgCf3SgurSCJ0jcYfbuGCRYcIHP16dHgtXHNXtuhKx0-WyxFNsX-3i78fQz79iqC5FvQQDqY4YKmbBOV6JBGOjxKyrlndFdLq5U5VkIPhgw9O02owwD35dyRcWRaYTPd3LUZFKWA"
+}
+```
+
+You can use https://jwt.io to decode the access token.
 
 ## Options
 
@@ -64,7 +94,7 @@ Default: none
 
 ## Test
 
-To test the debugger, you can use JBoss Keycloak as a local OpenID Connect Provider.
+To test the debugger (or any other Relying Party), you can use JBoss Keycloak as a local OpenID Connect Provider.
 
 Launch Keycloak using the following command (choosing the desired username and password):
 ```
