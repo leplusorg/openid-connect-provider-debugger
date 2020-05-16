@@ -110,3 +110,7 @@ Now you can run the debugger (see "Run" section above for details). The client I
 ## Credits
 
 This project is based on NGINX / OpenResty and all the actual OpenID Connect implemention comes from https://github.com/zmartzone/lua-resty-openidc.
+
+## Alternatives
+
+If all you need is to do a simple test and you do not need to see the details of each HTTP request and response, you can use this online OIDC deubgger: https://oidcdebugger.com. Its source code is available at https://github.com/nbarbettini/oidc-debugger.
