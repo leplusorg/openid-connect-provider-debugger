@@ -3,8 +3,8 @@ A docker image to test and troubleshoot OpenID Connect Providers (OP) using a si
 
 ![Docker Stars](https://img.shields.io/docker/stars/thomasleplus/openid-connect-provider-debugger.svg)
 ![Docker Pulls](https://img.shields.io/docker/pulls/thomasleplus/openid-connect-provider-debugger.svg)
-![Docker Automated](https://img.shields.io/docker/automated/thomasleplus/openid-connect-provider-debugger.svg)
-![Docker Build](https://img.shields.io/docker/build/thomasleplus/openid-connect-provider-debugger.svg)
+![Docker Automated](https://img.shields.io/docker/cloud/automated/thomasleplus/openid-connect-provider-debugger.svg)
+![Docker Build](https://img.shields.io/docker/cloud/build/thomasleplus/openid-connect-provider-debugger.svg)
 
 ## Run
 
