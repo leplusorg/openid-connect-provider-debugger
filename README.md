@@ -62,6 +62,21 @@ Mandatory: yes
 
 Default: none
 
+## Test
+
+To test the debugger, you can use JBoss Keycloak as a local OpenID Connect Provider.
+
+Launch Keycloak using the following command (choosing the desired username and password):
+```
+docker run -i -e KEYCLOAK_USER=<usename> -e KEYCLOAK_PASSWORD=<password> -p 8081:8080 jboss/keycloak
+```
+
+The go to the Keycloak admin console at http://localhost:8081/auth/admin/master/console/#/realms/master/clients and authenticate using the username and password chosen in the above command.
+
+Click the "Create" button to create a new client. Choose a client ID and click "Save". On the next screen, choose the value "confidential" for the "Access Type". Then you need to provice the "Valid Redirect URIs". Put here the value "http://localhost:8080/*" assuming that you will be running the debugger on port 8080 (see "Run" section above for details). Click "Save". Then go to the "Credentials" tab and copy client secret.
+
+Now you can run the debugger (see "Run" section above for details). The client ID is the value that you just chose when creating the client in Keycloak. The client secret is the value that you copied from the Credentials tab. The OpenID Connect Discovery URL will be http://192.168.0.1:8081/auth/realms/master/.well-known/openid-configuration where you need to replace the IP address by your local machine network address. You need to use an IP address that works both from your local machine and from inside the debugger docker container (for the debugger to be able to connect to the OP to retrieve the tokens). This is why you can't use `localhost` or `127.0.0.1`.
+
 ## Credits
 
 This project is based on NGINX / OpenResty and all the actual OpenID Connect implemention comes from https://github.com/zmartzone/lua-resty-openidc.
