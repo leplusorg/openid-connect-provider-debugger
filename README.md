@@ -16,7 +16,7 @@ To launch the debugger, you willd need to get the following information from the
 1. client secret.
 1. discovery URI (usually something like https://www.provider.com/.well-known/openid-configuration).
 
-Also typically your OP will ask you to provide the Reidrect URI it should accept (http://localhost:8080/login in our example below).
+Also typically your OP will ask you to provide the Redirect URI it should accept (http://localhost:8080/login in our example below).
 
 Once your have provided and gathered the above information, simply run the following docker command:
 
