@@ -1,11 +1,11 @@
 # openid-connect-idp-debugger
 A docker image to test and troubleshoot OpenID Connect Providers (OP) using a simple Relying Party (RP).
 
-![GitHub Build](https://img.shields.io/github/workflow/status/thomasleplus/openid-connect-provider-debugger/workflow.svg)
-![Docker Stars](https://img.shields.io/docker/stars/thomasleplus/openid-connect-provider-debugger.svg)
-![Docker Pulls](https://img.shields.io/docker/pulls/thomasleplus/openid-connect-provider-debugger.svg)
-![Docker Automated](https://img.shields.io/docker/cloud/automated/thomasleplus/openid-connect-provider-debugger.svg)
-![Docker Build](https://img.shields.io/docker/cloud/build/thomasleplus/openid-connect-provider-debugger.svg)
+![GitHub Build](https://img.shields.io/github/workflow/status/thomasleplus/openid-connect-provider-debugger/Docker Image CI)
+![Docker Stars](https://img.shields.io/docker/stars/thomasleplus/openid-connect-provider-debugger)
+![Docker Pulls](https://img.shields.io/docker/pulls/thomasleplus/openid-connect-provider-debugger)
+![Docker Automated](https://img.shields.io/docker/cloud/automated/thomasleplus/openid-connect-provider-debugger)
+![Docker Build](https://img.shields.io/docker/cloud/build/thomasleplus/openid-connect-provider-debugger)
 
 ## Run
 
