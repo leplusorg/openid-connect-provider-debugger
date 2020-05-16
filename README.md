@@ -6,6 +6,7 @@ A docker image to test and troubleshoot OpenID Connect Providers (OP) using a si
 ![Docker Pulls](https://img.shields.io/docker/pulls/thomasleplus/openid-connect-provider-debugger)
 ![Docker Automated](https://img.shields.io/docker/cloud/automated/thomasleplus/openid-connect-provider-debugger)
 ![Docker Build](https://img.shields.io/docker/cloud/build/thomasleplus/openid-connect-provider-debugger)
+![Docker Version](https://img.shields.io/docker/v/thomasleplus/openid-connect-provider-debugger?sort=semver)
 
 ## Run
 
