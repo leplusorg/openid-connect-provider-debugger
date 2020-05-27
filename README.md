@@ -62,7 +62,7 @@ A successful sign in would result in the display of a JSON document like this on
 
 You can use https://jwt.io to decode the access token.
 
-If you have chosen not to provide the OpenID Connect paraemters as environment variables, you can pass them as URL parameters using the following syntax: http://localhost:8080?oidc_client_id=<client_id>&oidc_client_secret=<client_secret>&oidc_discovery=<discovery_url>&oidc_redirect_uri=<redirect_uri>
+If you have chosen not to provide the OpenID Connect paraemters as environment variables, you can pass them as URL parameters using the following syntax: http://localhost:8080?oidc_client_id=client_id&oidc_client_secret=client_secret&oidc_discovery=discovery_url&oidc_redirect_uri=redirect_uri
 
 Remeber to URL encode the parameter values if they contain any reserved characters ('&', '?', '/' etc.).
 
