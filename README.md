@@ -21,7 +21,7 @@ Also typically your OP will ask you to provide the Redirect URI it should accept
 Once your have provided and gathered the above information, run the following docker command passing the parameter as environment variables:
 
 ```
-docker run -i -e 'OIDC_CLIENT_ID=<client_id>' -e 'OIDC_CLIENT_SECRET=<client_secret>' -e 'OIDC_DISCOVERY=<discovery_url>' -e 'OIDC_REDIRECT_URI=http://localhost:8080/login' -p 8080:80 thomasleplus/openid-connect-provider-debugger
+docker run -i -e 'oidc_client_id=<client_id>' -e 'oidc_client_secret=<client_secret>' -e 'oidc_discovery=<discovery_url>' -e 'oidc_redirect_uri=http://localhost:8080/login' -p 8080:80 thomasleplus/openid-connect-provider-debugger
 ```
 
 Alternatively, you can run the docker image without environment variables and provide the required value at runtime using URL parameters (more on that below):
@@ -35,28 +35,35 @@ Finally open http://localhost:8080 in your favorite browser and you should be re
 A successful sign in would result in the display of a JSON document like this one:
 ```
 {
+	"options": {
+		"client_id": "debugger",
+		"discovery": "http:\/\/192.168.1.10:8081\/auth\/realms\/master\/.well-known\/openid-configuration",
+		"redirect_uri": "http:\/\/localhost:8080\/login",
+		"ssl_verify": "no",
+		"client_secret": "835e0717-e0c8-4b57-b044-295fa0e3f61b"
+	},
 	"id_token": {
 		"azp": "debugger",
-		"iat": 1589647290,
+		"iat": 1590619714,
 		"iss": "http:\/\/192.168.1.10:8081\/auth\/realms\/master",
 		"aud": "debugger",
-		"nonce": "82efa38c4a21df2069ab898fdf6e91ea",
-		"exp": 1589647350,
-		"jti": "cbd96855-59e3-446d-af6e-dda62093716d",
-		"sub": "138c94bc-e73b-40a2-93c5-547f16200b01",
+		"nonce": "1e23537bb06f2b4e324d12d8d51f2c6b",
+		"exp": 1590619774,
+		"jti": "9a1b5cf6-87ab-4557-a4aa-b771a67af1db",
+		"sub": "38b4a290-5332-4c4c-bb8f-46eb2826c7ea",
 		"email_verified": false,
 		"acr": "1",
 		"preferred_username": "tom",
-		"auth_time": 1589647290,
-		"session_state": "49cdc3ed-61dc-4d05-be78-3ca23727c35d",
+		"auth_time": 1590619714,
+		"session_state": "fb3edcc2-f5b3-47fa-84f6-60cbae792cde",
 		"typ": "ID"
 	},
 	"user": {
 		"email_verified": false,
 		"preferred_username": "tom",
-		"sub": "138c94bc-e73b-40a2-93c5-547f16200b01"
+		"sub": "38b4a290-5332-4c4c-bb8f-46eb2826c7ea"
 	},
-	"access_token": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJESXl1cmFIN3VUYVpXQ1I4SWRfWHdwd2FaZmFod2I5TDRaRkg1U3VlYmw0In0.eyJleHAiOjE1ODk2NDczNTAsImlhdCI6MTU4OTY0NzI5MCwiYXV0aF90aW1lIjoxNTg5NjQ3MjkwLCJqdGkiOiJkZTA2ZTcxYi1lMGZmLTQ2NWUtYWZlOS0wODRiN2M1MzI4NGIiLCJpc3MiOiJodHRwOi8vMTkyLjE2OC4xLjEwOjgwODEvYXV0aC9yZWFsbXMvbWFzdGVyIiwiYXVkIjpbIm1hc3Rlci1yZWFsbSIsImFjY291bnQiXSwic3ViIjoiMTM4Yzk0YmMtZTczYi00MGEyLTkzYzUtNTQ3ZjE2MjAwYjAxIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiZGVidWdnZXIiLCJub25jZSI6IjgyZWZhMzhjNGEyMWRmMjA2OWFiODk4ZmRmNmU5MWVhIiwic2Vzc2lvbl9zdGF0ZSI6IjQ5Y2RjM2VkLTYxZGMtNGQwNS1iZTc4LTNjYTIzNzI3YzM1ZCIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiY3JlYXRlLXJlYWxtIiwib2ZmbGluZV9hY2Nlc3MiLCJhZG1pbiIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsibWFzdGVyLXJlYWxtIjp7InJvbGVzIjpbInZpZXctaWRlbnRpdHktcHJvdmlkZXJzIiwidmlldy1yZWFsbSIsIm1hbmFnZS1pZGVudGl0eS1wcm92aWRlcnMiLCJpbXBlcnNvbmF0aW9uIiwiY3JlYXRlLWNsaWVudCIsIm1hbmFnZS11c2VycyIsInF1ZXJ5LXJlYWxtcyIsInZpZXctYXV0aG9yaXphdGlvbiIsInF1ZXJ5LWNsaWVudHMiLCJxdWVyeS11c2VycyIsIm1hbmFnZS1ldmVudHMiLCJtYW5hZ2UtcmVhbG0iLCJ2aWV3LWV2ZW50cyIsInZpZXctdXNlcnMiLCJ2aWV3LWNsaWVudHMiLCJtYW5hZ2UtYXV0aG9yaXphdGlvbiIsIm1hbmFnZS1jbGllbnRzIiwicXVlcnktZ3JvdXBzIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0b20ifQ.NdRCOPxGzJvZYhbfcm7dTrsbcQ4AtsO17hUUDWwdYWEr7lHp4z-b-_xkEUiaAub-JCDpb5EO2EVFl3BaoZZc8eEsdXRQIRrBj-TYVFtcgd362MnZMORuXuP-7YbUsoNeAhAzBTVoDLJVXxK30yMN3vY9JOpxWLm8xxGGbY3QA7ciPq5J_phKjMal9kT-gZaSNMutPwpiR3paKGcgCf3SgurSCJ0jcYfbuGCRYcIHP16dHgtXHNXtuhKx0-WyxFNsX-3i78fQz79iqC5FvQQDqY4YKmbBOV6JBGOjxKyrlndFdLq5U5VkIPhgw9O02owwD35dyRcWRaYTPd3LUZFKWA"
+	"access_token": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJwbjdtd1B1WDZ5ZjBvSHEtTDFiZ2l6T2FVeGs5aDlGaU8ycjlMcV9LYkNRIn0.eyJleHAiOjE1OTA2MTk3NzQsImlhdCI6MTU5MDYxOTcxNCwiYXV0aF90aW1lIjoxNTkwNjE5NzE0LCJqdGkiOiI5MTk0ODgxZS05ZGMzLTQ1YjItOWExOS1mZDFlZTk3NDY4NjciLCJpc3MiOiJodHRwOi8vMTkyLjE2OC4xLjEwOjgwODEvYXV0aC9yZWFsbXMvbWFzdGVyIiwiYXVkIjpbIm1hc3Rlci1yZWFsbSIsImFjY291bnQiXSwic3ViIjoiMzhiNGEyOTAtNTMzMi00YzRjLWJiOGYtNDZlYjI4MjZjN2VhIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiZGVidWdnZXIiLCJub25jZSI6IjFlMjM1MzdiYjA2ZjJiNGUzMjRkMTJkOGQ1MWYyYzZiIiwic2Vzc2lvbl9zdGF0ZSI6ImZiM2VkY2MyLWY1YjMtNDdmYS04NGY2LTYwY2JhZTc5MmNkZSIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiY3JlYXRlLXJlYWxtIiwib2ZmbGluZV9hY2Nlc3MiLCJhZG1pbiIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsibWFzdGVyLXJlYWxtIjp7InJvbGVzIjpbInZpZXctcmVhbG0iLCJ2aWV3LWlkZW50aXR5LXByb3ZpZGVycyIsIm1hbmFnZS1pZGVudGl0eS1wcm92aWRlcnMiLCJpbXBlcnNvbmF0aW9uIiwiY3JlYXRlLWNsaWVudCIsIm1hbmFnZS11c2VycyIsInF1ZXJ5LXJlYWxtcyIsInZpZXctYXV0aG9yaXphdGlvbiIsInF1ZXJ5LWNsaWVudHMiLCJxdWVyeS11c2VycyIsIm1hbmFnZS1ldmVudHMiLCJtYW5hZ2UtcmVhbG0iLCJ2aWV3LWV2ZW50cyIsInZpZXctdXNlcnMiLCJ2aWV3LWNsaWVudHMiLCJtYW5hZ2UtYXV0aG9yaXphdGlvbiIsIm1hbmFnZS1jbGllbnRzIiwicXVlcnktZ3JvdXBzIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0b20ifQ.NCFiSW3Tt7qQCtE8g46kLg-oSqKiDseg4NCwV1kVPoD5yFa9XunooVE3eO1XgKACb_FFzrxEMYfmStpvypI7VFu-XO5ULkrbXElhDtMmVbEn-aqNILHs_h_Ewo1JdCa-gNL9zav5QhmcwmIUpNYsDsQxm-bN86JgQO2f8ZJ497K6DpPFnIrhd0eT0fa4iw7Tx64PdIDUPXqqYrR2nh0P-D0dkkVTSu-EI14uuwwClYy5Pq9EeKfX9M8SqUp81gprhty-9PneDcFjBpEgFRCfFhecSBn0_c1urlx5QTbN96PnCWlH2t-aGLfRHD8oJcv-xztHt02Zhy-L2B3z-bCfSQ"
 }
 ```
 
@@ -68,9 +75,9 @@ Remeber to URL encode the parameter values if they contain any reserved characte
 
 ## Options
 
-Settings are passed to the docker image using environment variables (e.g. using the -e command line option).
+Settings are passed to the docker image using environment variables (e.g. using the -e command line option) or directly to NGINX using URL parameters.
 
-### OIDC_CLIENT_ID
+### oidc_client_id
 
 Description: the OpenID Connect Client ID.
 
@@ -78,7 +85,7 @@ Mandatory: yes
 
 Default: none
 
-### OIDC_CLIENT_SECRET
+### oidc_client_secret
 
 Description: the OpenID Connect Client Secret (WARNING: this sensitive value will appear in the logs of the docker so please do not share your logs without redacting this value).
 
@@ -86,7 +93,7 @@ Mandatory: yes
 
 Default: none
 
-### OIDC_DISCOVERY
+### oidc_discovery
 
 Description: the URI of the OpenID Connect Provider discovery endpoint (usually a URI ending in something like "/.well-known/openid-configuration").
 
@@ -94,7 +101,7 @@ Mandatory: yes
 
 Default: none
 
-### OIDC_REDIRECT_URI
+### oidc_redirect_uri
 
 Description: the OpenID Connect redirect URI (typically if you are running the instance locally on port 8080, it would be http://localhost:8080/login).
 
