@@ -18,10 +18,16 @@ To launch the debugger, you willd need to get the following information from the
 
 Also typically your OP will ask you to provide the Redirect URI it should accept (http://localhost:8080/login in our example below).
 
-Once your have provided and gathered the above information, simply run the following docker command:
+Once your have provided and gathered the above information, run the following docker command passing the parameter as environment variables:
 
 ```
-docker run -i -e 'OIDC_CLIENT_ID=<client_secret>' -e 'OIDC_CLIENT_SECRET=<client_id>' -e 'OIDC_DISCOVERY=<discovery_url>' -e 'OIDC_REDIRECT_URI=http://localhost:8080/login' -p 8080:80 thomasleplus/openid-connect-provider-debugger
+docker run -i -e 'OIDC_CLIENT_ID=<client_id>' -e 'OIDC_CLIENT_SECRET=<client_secret>' -e 'OIDC_DISCOVERY=<discovery_url>' -e 'OIDC_REDIRECT_URI=http://localhost:8080/login' -p 8080:80 thomasleplus/openid-connect-provider-debugger
+```
+
+Alternatively, you can run the docker image without environment variables and provide the required value at runtime using URL parameters (more on that below):
+
+```
+docker run -i -p 8080:80 thomasleplus/openid-connect-provider-debugger
 ```
 
 Finally open http://localhost:8080 in your favorite browser and you should be redirected to your OP to begin the authentication flow. Remember that if you are already signed in, you may go through the authentication without any prompt. If you authenticate succesfully, you should see a JSON document containing all the information received by the debugger from the OP. You can find more details (including the raw tokens) in the logs printed by the docker container.
@@ -55,6 +61,10 @@ A successful sign in would result in the display of a JSON document like this on
 ```
 
 You can use https://jwt.io to decode the access token.
+
+If you have chosen not to provide the OpenID Connect paraemters as environment variables, you can pass them as URL parameters using the following syntax: http://localhost:8080?oidc_client_id=<client_id>&oidc_client_secret=<client_secret>&oidc_discovery=<discovery_url>&oidc_redirect_uri=<redirect_uri>
+
+Remeber to URL encode the parameter values if they contain any reserved characters ('&', '?', '/' etc.).
 
 ## Options
 
