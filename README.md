@@ -10,7 +10,7 @@ A docker image to test and troubleshoot OpenID Connect Providers (OP) using a si
 
 ## Run
 
-To launch the debugger, you willd need to get the following information from the OP:
+To launch the debugger, you will need to get the following information from the OP:
 
 1. client ID.
 1. client secret.
@@ -30,7 +30,7 @@ Alternatively, you can run the docker image without environment variables and pr
 docker run -i -p 8080:80 thomasleplus/openid-connect-provider-debugger
 ```
 
-Finally open http://localhost:8080 in your favorite browser and you should be redirected to your OP to begin the authentication flow. Remember that if you are already signed in, you may go through the authentication without any prompt. If you authenticate succesfully, you should see a JSON document containing all the information received by the debugger from the OP. You can find more details (including the raw tokens) in the logs printed by the docker container.
+Finally, open http://localhost:8080 in your favorite browser and you should be redirected to your OP to begin the authentication flow. Remember that if you are already signed in, you may go through the authentication without any prompt. If you authenticate successfully, you should see a JSON document containing all the information received by the debugger from the OP. You can find more details (including the raw tokens) in the logs printed by the docker container.
 
 A successful sign in would result in the display of a JSON document like this one:
 ```
@@ -69,9 +69,9 @@ A successful sign in would result in the display of a JSON document like this on
 
 You can use https://jwt.io to decode the access token.
 
-If you have chosen not to provide the OpenID Connect paraemters as environment variables, you can pass them as URL parameters using the following syntax: http://localhost:8080?oidc_client_id=client_id&oidc_client_secret=client_secret&oidc_discovery=discovery_url&oidc_redirect_uri=redirect_uri
+If you have chosen not to provide the OpenID Connect parameters as environment variables, you can pass them as URL parameters using the following syntax: http://localhost:8080?oidc_client_id=client_id&oidc_client_secret=client_secret&oidc_discovery=discovery_url&oidc_redirect_uri=redirect_uri
 
-Remeber to URL encode the parameter values if they contain any reserved characters ('&', '?', '/' etc.).
+Remember to URL encode the parameter values if they contain any reserved characters ('&', '?', '/' etc.).
 
 ## Options
 
@@ -118,18 +118,18 @@ Launch Keycloak using the following command (choosing the desired username and p
 docker run -i -e KEYCLOAK_USER=<usename> -e KEYCLOAK_PASSWORD=<password> -p 8081:8080 jboss/keycloak
 ```
 
-The go to the Keycloak admin console at http://localhost:8081/auth/admin/master/console/#/realms/master/clients and authenticate using the username and password chosen in the above command.
+Then go to the Keycloak admin console at http://localhost:8081/auth/admin/master/console/#/realms/master/clients and authenticate using the username and password chosen in the above command.
 
-Click the "Create" button to create a new client. Choose a client ID and click "Save". On the next screen, choose the value "confidential" for the "Access Type". Then you need to provice the "Valid Redirect URIs". Put here the value "http://localhost:8080/*" assuming that you will be running the debugger on port 8080 (see "Run" section above for details). Click "Save". Then go to the "Credentials" tab and copy client secret.
+Click the "Create" button to create a new client. Choose a client ID and click "Save". On the next screen, choose the value "confidential" for the "Access Type". Then you need to provide the "Valid Redirect URIs". Put here the value "http://localhost:8080/*" assuming that you will be running the debugger on port 8080 (see "Run" section above for details). Click "Save". Then go to the "Credentials" tab and copy the client secret.
 
 Now you can run the debugger (see "Run" section above for details). The client ID is the value that you just chose when creating the client in Keycloak. The client secret is the value that you copied from the Credentials tab. The OpenID Connect Discovery URL will be http://192.168.0.1:8081/auth/realms/master/.well-known/openid-configuration where you need to replace the IP address by your local machine network address. You need to use an IP address that works both from your local machine and from inside the debugger docker container (for the debugger to be able to connect to the OP to retrieve the tokens). This is why you can't use `localhost` or `127.0.0.1`.
 
 ## Credits
 
-This project is based on NGINX / OpenResty and all the actual OpenID Connect implemention comes from https://github.com/zmartzone/lua-resty-openidc.
+This project is based on NGINX / OpenResty and all the actual OpenID Connect implementation comes from https://github.com/zmartzone/lua-resty-openidc.
 
 ## Alternatives
 
-If all you need is to do a simple test and you do not need to see the details of each HTTP request and response, you can use this online OIDC deubgger: https://oidcdebugger.com. Its source code is available at https://github.com/nbarbettini/oidc-debugger.
+If all you need is to do a simple test and you do not need to see the details of each HTTP request and response, you can use this online OIDC debugger: https://oidcdebugger.com. Its source code is available at https://github.com/nbarbettini/oidc-debugger.
 
-Another alternative are the official OpenID Foundation certification tests that can be run online at https://op.certification.openid.net:60000 and https://rp.certification.openid.net:8080, the source code being available at https://github.com/openid-certification/oidctest.
+Another alternative is the official OpenID Foundation certification tests that can be run online at https://op.certification.openid.net:60000 and https://rp.certification.openid.net:8080, the source code being available at https://github.com/openid-certification/oidctest.
