@@ -18,19 +18,17 @@ To launch the debugger, you will need to get the following information from the 
 
 Also typically your OP will ask you to provide the Redirect URI it should accept (http://localhost:8080/login in our example below).
 
-Once your have provided and gathered the above information, run the following docker command passing the parameter as environment variables:
+### Using the web UI
 
-```
-docker run -i -e 'oidc_client_id=<client_id>' -e 'oidc_client_secret=<client_secret>' -e 'oidc_discovery=<discovery_url>' -e 'oidc_redirect_uri=http://localhost:8080/login' -p 8080:80 thomasleplus/openid-connect-provider-debugger
-```
-
-Alternatively, you can run the docker image without environment variables and provide the required value at runtime using URL parameters (more on that below):
+Once your have provided and gathered the above information, run the following docker:
 
 ```
 docker run -i -p 8080:80 thomasleplus/openid-connect-provider-debugger
 ```
 
-Finally, open http://localhost:8080 in your favorite browser and you should be redirected to your OP to begin the authentication flow. Remember that if you are already signed in, you may go through the authentication without any prompt. If you authenticate successfully, you should see a JSON document containing all the information received by the debugger from the OP. You can find more details (including the raw tokens) in the logs printed by the docker container.
+Finally, open http://localhost:8080 in your favorite browser and follow the instruction on the web page.
+
+You should be redirected to your OP to begin the authentication flow. Remember that if you are already signed in, you may go through the authentication without any prompt. If you authenticate successfully, you should see a JSON document containing all the information received by the debugger from the OP. You can find more details (including the raw tokens) in the logs printed by the docker container.
 
 A successful sign in would result in the display of a JSON document like this one:
 ```
@@ -69,9 +67,21 @@ A successful sign in would result in the display of a JSON document like this on
 
 You can use https://jwt.io to decode the access token.
 
-If you have chosen not to provide the OpenID Connect parameters as environment variables, you can pass them as URL parameters using the following syntax: http://localhost:8080?oidc_client_id=client_id&oidc_client_secret=client_secret&oidc_discovery=discovery_url&oidc_redirect_uri=redirect_uri
+### Using URL parameters
+
+If you prefer to skip the UI, you can pass directly the required values as URL parameters using the following syntax: http://localhost:8080/debug?oidc_client_id=client_id&oidc_client_secret=client_secret&oidc_discovery=discovery_url&oidc_redirect_uri=redirect_uri
 
 Remember to URL encode the parameter values if they contain any reserved characters ('&', '?', '/' etc.).
+
+### Using environment variables
+
+You can pass the values to the docker container using environment variales like this:
+
+```
+docker run -i -e 'oidc_client_id=<client_id>' -e 'oidc_client_secret=<client_secret>' -e 'oidc_discovery=<discovery_url>' -e 'oidc_redirect_uri=http://localhost:8080/login' -p 8080:80 thomasleplus/openid-connect-provider-debugger
+```
+
+Then go to http://localhost:8080/debug to skip the UI and initiate the authentication flow.
 
 ## Options
 

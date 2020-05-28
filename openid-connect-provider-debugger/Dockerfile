@@ -13,4 +13,6 @@ RUN patch /usr/local/openresty/nginx/conf/nginx.conf /usr/local/openresty/nginx/
 
 COPY default.conf /etc/nginx/conf.d/default.conf
 
+COPY index.html /usr/local/openresty/nginx/html/index.html
+
 EXPOSE 80 443
