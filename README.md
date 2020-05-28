@@ -71,19 +71,23 @@ You can use https://jwt.io to decode the access token.
 
 If you prefer to skip the UI, you can pass directly the required values as URL parameters using the following syntax: http://localhost:8080/debug?oidc_client_id=client_id&oidc_client_secret=client_secret&oidc_discovery=discovery_url&oidc_redirect_uri=redirect_uri
 
+See section "Parameters" below for a description of each parameter.
+
 Remember to URL encode the parameter values if they contain any reserved characters ('&', '?', '/' etc.).
 
 ### Using environment variables
 
-You can pass the values to the docker container using environment variales like this:
+You can pass the parameters to the docker container using environment variales like this:
 
 ```
 docker run -i -e 'oidc_client_id=<client_id>' -e 'oidc_client_secret=<client_secret>' -e 'oidc_discovery=<discovery_url>' -e 'oidc_redirect_uri=http://localhost:8080/login' -p 8080:80 thomasleplus/openid-connect-provider-debugger
 ```
 
+See section "Parameters" below for a description of each parameter.
+
 Then go to http://localhost:8080/debug to skip the UI and initiate the authentication flow.
 
-## Options
+## Parameters
 
 Settings are passed to the docker image using environment variables (e.g. using the -e command line option) or directly to NGINX using URL parameters.
 
