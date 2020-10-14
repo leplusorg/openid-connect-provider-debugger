@@ -1,0 +1,11 @@
+version: 2
+updates:
+  - package-ecosystem: "docker"
+    directory: "/openid-connect-provider-debugger"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      
