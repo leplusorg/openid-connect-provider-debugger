@@ -4,4 +4,4 @@ RUN apk update \
  && apk add curl \
  && rm -rf /var/cache/apk/*
 
-CMD ["which", "curl"]
+CMD ["/usr/bin/curl", "-i", "-k", "https://openid-connect-provider-debugger/"]
