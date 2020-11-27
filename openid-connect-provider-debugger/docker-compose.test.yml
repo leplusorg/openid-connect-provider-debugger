@@ -4,7 +4,7 @@ services:
   sut:
     build:
       context: .
-      dockerfile: Dockerfile.test
+      dockerfile: Dockerfile-test
     links:
     - openid-connect-provider-debugger
   openid-connect-provider-debugger:
