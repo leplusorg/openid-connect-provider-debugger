@@ -1,7 +1,13 @@
-version: "3.6"
+version: "3.8"
  
 services:
- sut:
-   build: .
-   command: find / -type f
-   
+  sut:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    links:
+    - openid-connect-provider-debugger
+  openid-connect-provider-debugger:
+    build:
+      context: .
+      dockerfile: Dockerfile
