@@ -15,6 +15,6 @@ services:
     - oidc_client_id=kbyuFDidLLm280LIwVFiazOqjO3ty8KH
     - oidc_client_secret=60Op4HFM0I8ajz0WdiStAbziZ-VFQttXuxixHHs2R7r7-CW8GR79l-mmLqMhc-Sa
     - oidc_discovery=https://samples.auth0.com/.well-known/openid-configuration
-    - oidc_redirect_uri=https://openid-connect-provider-debugger.code/login
+    - oidc_redirect_uri=http://openid-connect-provider-debugger.code/login
     - oidc_ssl_verify=yes
     
