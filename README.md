@@ -1,7 +1,7 @@
 # openid-connect-provider-debugger
 A docker image to test and troubleshoot OpenID Connect (OIDC) Providers (OP) using a simple Relying Party (RP).
 
-![GitHub Build](https://img.shields.io/github/workflow/status/thomasleplus/openid-connect-provider-debugger/Docker%20Image%20CI)
+![Docker Build](https://github.com/thomasleplus/openid-connect-provider-debugger/workflows/Docker/badge.svg)
 ![Docker Stars](https://img.shields.io/docker/stars/thomasleplus/openid-connect-provider-debugger)
 ![Docker Pulls](https://img.shields.io/docker/pulls/thomasleplus/openid-connect-provider-debugger)
 ![Docker Automated](https://img.shields.io/docker/cloud/automated/thomasleplus/openid-connect-provider-debugger)
