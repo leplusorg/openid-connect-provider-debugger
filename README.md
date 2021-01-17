@@ -1,12 +1,12 @@
 # openid-connect-provider-debugger
 A docker image to test and troubleshoot OpenID Connect (OIDC) Providers (OP) using a simple Relying Party (RP).
 
-![Docker Build](https://github.com/thomasleplus/openid-connect-provider-debugger/workflows/Docker/badge.svg)
-![Docker Stars](https://img.shields.io/docker/stars/thomasleplus/openid-connect-provider-debugger)
-![Docker Pulls](https://img.shields.io/docker/pulls/thomasleplus/openid-connect-provider-debugger)
-![Docker Automated](https://img.shields.io/docker/cloud/automated/thomasleplus/openid-connect-provider-debugger)
-![Docker Build](https://img.shields.io/docker/cloud/build/thomasleplus/openid-connect-provider-debugger)
-![Docker Version](https://img.shields.io/docker/v/thomasleplus/openid-connect-provider-debugger?sort=semver)
+[![Docker Build](https://github.com/thomasleplus/openid-connect-provider-debugger/workflows/Docker/badge.svg)](https://github.com/thomasleplus/openid-connect-provider-debugger/actions?query=workflow:"Docker")
+[![Docker Stars](https://img.shields.io/docker/stars/thomasleplus/openid-connect-provider-debugger)](https://hub.docker.com/r/thomasleplus/openid-connect-provider-debugger)
+[![Docker Pulls](https://img.shields.io/docker/pulls/thomasleplus/openid-connect-provider-debugger)](https://hub.docker.com/r/thomasleplus/openid-connect-provider-debugger)
+[![Docker Automated](https://img.shields.io/docker/cloud/automated/thomasleplus/openid-connect-provider-debugger)](https://hub.docker.com/r/thomasleplus/openid-connect-provider-debugger)
+[![Docker Build](https://img.shields.io/docker/cloud/build/thomasleplus/openid-connect-provider-debugger)](https://hub.docker.com/r/thomasleplus/openid-connect-provider-debugger)
+[![Docker Version](https://img.shields.io/docker/v/thomasleplus/openid-connect-provider-debugger?sort=semver)](https://hub.docker.com/r/thomasleplus/openid-connect-provider-debugger)
 
 ## Run
 
