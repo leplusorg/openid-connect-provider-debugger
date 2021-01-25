@@ -16,4 +16,6 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build the Docker image
       working-directory: openid-connect-provider-debugger
-      run: docker build .
+      run: |
+        docker-compose --file docker-compose.test.yml build
+        docker-compose --file docker-compose.test.yml run sut
