@@ -17,4 +17,3 @@ services:
     - oidc_discovery=https://samples.auth0.com/.well-known/openid-configuration
     - oidc_redirect_uri=http://openid-connect-provider-debugger/login
     - oidc_ssl_verify=yes
-    
