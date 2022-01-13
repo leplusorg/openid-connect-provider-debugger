@@ -5,4 +5,4 @@ IFS=$'\n\t'
 
 dir=$(dirname "${0}")
 
-docker build -t thomasleplus/openid-connect-provider-debugger "${dir}/openid-connect-provider-debugger"
+docker build -t leplusorg/openid-connect-provider-debugger "${dir}/openid-connect-provider-debugger"
