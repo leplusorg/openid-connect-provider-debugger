@@ -13,4 +13,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Pull the latest Docker image
-      run: docker pull thomasleplus/openid-connect-provider-debugger
+      run: docker pull leplusorg/openid-connect-provider-debugger
