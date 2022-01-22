@@ -1,7 +1,8 @@
-FROM alpine
+FROM alpine:latest
 
+# hadolint ignore=DL3018
 RUN apk update \
- && apk add curl \
+ && apk --no-cache add curl \
  && rm -rf /var/cache/apk/*
 
 CMD ["/usr/bin/curl", "-i", "-s", "-S", "-f", "http://openid-connect-provider-debugger"]

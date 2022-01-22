@@ -1,7 +1,8 @@
 FROM openresty/openresty:alpine
 
+# hadolint ignore=DL3018
 RUN apk update \
- && apk --update --no-cache add curl patch perl \
+ && apk --no-cache add curl patch perl \
  && rm -rf /var/cache/apk/* \
  && opm install bungle/lua-resty-session \
  && opm install cdbattags/lua-resty-jwt \
