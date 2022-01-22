@@ -1,7 +1,7 @@
 FROM openresty/openresty:alpine
 
 RUN apk update \
- && apk --update --no-cache add add curl patch perl \
+ && apk --update --no-cache add curl patch perl \
  && rm -rf /var/cache/apk/* \
  && opm install bungle/lua-resty-session \
  && opm install cdbattags/lua-resty-jwt \
