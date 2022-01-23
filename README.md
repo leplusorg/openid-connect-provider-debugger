@@ -107,7 +107,7 @@ the authentication flow.
 ## Parameters
 
 Settings are passed to the docker image using environment variables
-(e.g. using the -e command line option) or directly to NGINX using URL
+(e.g. using the -e command-line option) or directly to NGINX using URL
 parameters.
 
 ### oidc_client_id
@@ -167,7 +167,7 @@ command.
 Click the "Create" button to create a new client. Choose a client ID
 and click "Save". On the next screen, choose the value "confidential"
 for the "Access Type". Then you need to provide the "Valid Redirect
-URIs". Put here the value "http://localhost:8080/*" assuming that you
+URIs". Put here the value <http://localhost:8080/*> assuming that you
 will be running the debugger on port 8080 (see "Run" section above for
 details). Click "Save". Then go to the "Credentials" tab and copy the
 client secret.
@@ -193,11 +193,11 @@ Connect implementation comes from
 
 If all you need is to do a simple test and you do not need to see the
 details of each HTTP request and response, you can use this online
-OIDC debugger: https://oidcdebugger.com. Its source code is available
+OIDC debugger: <https://oidcdebugger.com>. Its source code is available
 at <https://github.com/nbarbettini/oidc-debugger>.
 
 Another alternative is the official OpenID Foundation certification
 tests that can be run online at
-https://op.certification.openid.net:60000 and
-https://rp.certification.openid.net:8080, the source code being
+<https://op.certification.openid.net:60000> and
+<https://rp.certification.openid.net:8080>, the source code being
 available at <https://github.com/openid-certification/oidctest>.
