@@ -3,13 +3,13 @@
 A docker image to test and troubleshoot OpenID Connect (OIDC)
 Providers (OP) using a simple Relying Party (RP).
 
-[![ShellCheck](https://github.com/thomasleplus/openid-connect-provider-debugger/workflows/ShellCheck/badge.svg)](https://github.com/thomasleplus/openid-connect-provider-debugger/actions?query=workflow:"ShellCheck")
-[![Docker Build](https://github.com/thomasleplus/openid-connect-provider-debugger/workflows/Docker/badge.svg)](https://github.com/thomasleplus/openid-connect-provider-debugger/actions?query=workflow:"Docker")
-[![Docker Stars](https://img.shields.io/docker/stars/thomasleplus/openid-connect-provider-debugger)](https://hub.docker.com/r/thomasleplus/openid-connect-provider-debugger)
-[![Docker Pulls](https://img.shields.io/docker/pulls/thomasleplus/openid-connect-provider-debugger)](https://hub.docker.com/r/thomasleplus/openid-connect-provider-debugger)
-[![Docker Automated](https://img.shields.io/docker/cloud/automated/thomasleplus/openid-connect-provider-debugger)](https://hub.docker.com/r/thomasleplus/openid-connect-provider-debugger)
-[![Docker Build](https://img.shields.io/docker/cloud/build/thomasleplus/openid-connect-provider-debugger)](https://hub.docker.com/r/thomasleplus/openid-connect-provider-debugger)
-[![Docker Version](https://img.shields.io/docker/v/thomasleplus/openid-connect-provider-debugger?sort=semver)](https://hub.docker.com/r/thomasleplus/openid-connect-provider-debugger)
+[![ShellCheck](https://github.com/leplusorg/openid-connect-provider-debugger/workflows/ShellCheck/badge.svg)](https://github.com/leplusorg/openid-connect-provider-debugger/actions?query=workflow:"ShellCheck")
+[![Docker Build](https://github.com/leplusorg/openid-connect-provider-debugger/workflows/Docker/badge.svg)](https://github.com/leplusorg/openid-connect-provider-debugger/actions?query=workflow:"Docker")
+[![Docker Stars](https://img.shields.io/docker/stars/leplusorg/openid-connect-provider-debugger)](https://hub.docker.com/r/leplusorg/openid-connect-provider-debugger)
+[![Docker Pulls](https://img.shields.io/docker/pulls/leplusorg/openid-connect-provider-debugger)](https://hub.docker.com/r/leplusorg/openid-connect-provider-debugger)
+[![Docker Automated](https://img.shields.io/docker/cloud/automated/leplusorg/openid-connect-provider-debugger)](https://hub.docker.com/r/leplusorg/openid-connect-provider-debugger)
+[![Docker Build](https://img.shields.io/docker/cloud/build/leplusorg/openid-connect-provider-debugger)](https://hub.docker.com/r/leplusorg/openid-connect-provider-debugger)
+[![Docker Version](https://img.shields.io/docker/v/leplusorg/openid-connect-provider-debugger?sort=semver)](https://hub.docker.com/r/leplusorg/openid-connect-provider-debugger)
 
 ## Run
 
@@ -28,7 +28,7 @@ Once your have provided and gathered the above information, run the
 following docker:
 
 ```bash
-docker run -i -p 8080:80 thomasleplus/openid-connect-provider-debugger
+docker run -i -p 8080:80 leplusorg/openid-connect-provider-debugger
 ```
 
 Finally, open <http://localhost:8080> in your favorite browser and
@@ -96,7 +96,7 @@ You can pass the parameters to the docker container using environment
 variales like this:
 
 ```bash
-docker run -i -e 'oidc_client_id=<client_id>' -e 'oidc_client_secret=<client_secret>' -e 'oidc_discovery=<discovery_url>' -e 'oidc_redirect_uri=http://localhost:8080/login' -p 8080:80 thomasleplus/openid-connect-provider-debugger
+docker run -i -e 'oidc_client_id=<client_id>' -e 'oidc_client_secret=<client_secret>' -e 'oidc_discovery=<discovery_url>' -e 'oidc_redirect_uri=http://localhost:8080/login' -p 8080:80 leplusorg/openid-connect-provider-debugger
 ```
 
 See section "Parameters" below for a description of each parameter.
