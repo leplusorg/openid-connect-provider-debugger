@@ -1,0 +1,13 @@
+title = "gitleaks config"
+
+[extend]
+# useDefault will extend the base configuration with the default gitleaks config:
+# https://github.com/zricethezav/gitleaks/blob/master/config/gitleaks.toml
+useDefault = true
+
+[allowlist]
+description = "Allow list for test OpenID Connect secrets"
+regexTarget = "match"
+regexes = [
+  '''^(60Op4HFM0I8ajz0WdiStAbziZ-VFQttXuxixHHs2R7r7-CW8GR79l-mmLqMhc-Sa|kbyuFDidLLm280LIwVFiazOqjO3ty8KH)$''',
+]

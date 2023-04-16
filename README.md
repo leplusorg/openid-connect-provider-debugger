@@ -50,7 +50,7 @@ A successful sign in would result in the display of a JSON document like this on
         "discovery": "http:\/\/192.168.1.10:8081\/auth\/realms\/master\/.well-known\/openid-configuration",
         "redirect_uri": "http:\/\/localhost:8080\/login",
         "ssl_verify": "no",
-        "client_secret": "835e0717-e0c8-4b57-b044-295fa0e3f61b"
+        "client_secret": "60Op4HFM0I8ajz0WdiStAbziZ-VFQttXuxixHHs2R7r7-CW8GR79l-mmLqMhc-Sa"
     },
     "id_token": {
         "azp": "debugger",
