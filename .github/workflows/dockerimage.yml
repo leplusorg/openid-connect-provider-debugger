@@ -28,7 +28,7 @@ jobs:
           pull: true
           push: true
           sbom: true
-          tags: leplusorg/csv:latest
+          tags: leplusorg/openid-connect-provider-debugger:latest
       - name: Test the Docker image
         working-directory: openid-connect-provider-debugger
         run: docker compose -f docker-compose.test.yml run sut
