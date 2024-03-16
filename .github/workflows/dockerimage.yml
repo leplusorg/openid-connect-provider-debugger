@@ -50,17 +50,15 @@ jobs:
         working-directory: ${{ env.REPOSITORY }}
         run: docker compose -f docker-compose.test.yml run sut
       - name: Set RELEASE
-        id: set-release
         if: github.event_name != 'pull_request'
         run: |
           # shellcheck disable=SC2086
           RC="$(\grep ${REPOSITORY}/Dockerfile -e '^FROM' | \head -n 1 | \sed -e 's/^.*://')"
           if [[ "${RC}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] && ! \git show-ref --tags --verify --quiet "refs/tags/v${RC}" ; then
             \echo "RELEASE=${RC}" >> "${GITHUB_ENV}"
-            \echo ::set-output name=do-release::true
           fi
       - name: Trigger release
-        if: steps.set-release.outputs.do-release == true
+        if: ${{ env.RELEASE != '' }}
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
