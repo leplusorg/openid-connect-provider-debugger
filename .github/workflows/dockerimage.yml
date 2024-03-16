@@ -50,6 +50,7 @@ jobs:
         working-directory: ${{ env.REPOSITORY }}
         run: docker compose -f docker-compose.test.yml run sut
       - name: Set RELEASE
+        id: set-release
         if: github.event_name != 'pull_request'
         run: |
           # shellcheck disable=SC2086
@@ -59,7 +60,7 @@ jobs:
             \echo ::set-output name=do-release::true
           fi
       - name: Trigger release
-        if: steps.check.outputs.do-release == true
+        if: steps.set-release.outputs.do-release == true
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
