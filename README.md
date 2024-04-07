@@ -7,8 +7,6 @@ Providers (OP) using a simple Relying Party (RP).
 [![Docker Build](https://github.com/leplusorg/openid-connect-provider-debugger/workflows/Docker/badge.svg)](https://github.com/leplusorg/openid-connect-provider-debugger/actions?query=workflow:"Docker")
 [![Docker Stars](https://img.shields.io/docker/stars/leplusorg/openid-connect-provider-debugger)](https://hub.docker.com/r/leplusorg/openid-connect-provider-debugger)
 [![Docker Pulls](https://img.shields.io/docker/pulls/leplusorg/openid-connect-provider-debugger)](https://hub.docker.com/r/leplusorg/openid-connect-provider-debugger)
-[![Docker Automated](https://img.shields.io/docker/cloud/automated/leplusorg/openid-connect-provider-debugger)](https://hub.docker.com/r/leplusorg/openid-connect-provider-debugger)
-[![Docker Build](https://img.shields.io/docker/cloud/build/leplusorg/openid-connect-provider-debugger)](https://hub.docker.com/r/leplusorg/openid-connect-provider-debugger)
 [![Docker Version](https://img.shields.io/docker/v/leplusorg/openid-connect-provider-debugger?sort=semver)](https://hub.docker.com/r/leplusorg/openid-connect-provider-debugger)
 
 ## Run
