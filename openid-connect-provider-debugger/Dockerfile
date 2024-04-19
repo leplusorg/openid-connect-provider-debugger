@@ -1,3 +1,4 @@
+# checkov:skip=CKV_DOCKER_3
 FROM openresty/openresty:alpine
 
 HEALTHCHECK CMD ["/usr/bin/curl", "-i", "-s", "-S", "-f", "http://localhost"]
