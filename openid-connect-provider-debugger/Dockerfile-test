@@ -1,8 +1,22 @@
 FROM openresty/openresty:alpine
 
+HEALTHCHECK NONE
+
+ENTRYPOINT []
+
 # hadolint ignore=DL3018
 RUN apk update \
  && apk --no-cache add curl \
  && rm -rf /var/cache/apk/*
+
+ARG USER=default
+
+ENV HOME "/home/${USER}"
+
+RUN adduser -D "${USER}"
+
+USER "${USER}"
+
+WORKDIR "${HOME}"
 
 CMD ["/usr/bin/curl", "-i", "-s", "-S", "-f", "http://openid-connect-provider-debugger"]
