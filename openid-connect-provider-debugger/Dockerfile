@@ -2,7 +2,10 @@ FROM openresty/openresty:alpine
 
 HEALTHCHECK CMD ["/usr/bin/curl", "-i", "-s", "-S", "-f", "http://localhost"]
 
-ENTRYPOINT []
+ARG USER_NAME=default
+ARG USER_HOME=/home/default
+ARG USER_ID=1000
+ARG USER_GECOS=Default
 
 # hadolint ignore=DL3018
 RUN apk update \
@@ -21,13 +24,16 @@ COPY default.conf /etc/nginx/conf.d/default.conf
 
 COPY index.html /usr/local/openresty/nginx/html/index.html
 
-ARG USER=default
+RUN adduser \
+  --home "${USER_HOME}" \
+  --uid "${USER_ID}" \
+  --gecos "${USER_GECOS}" \
+  --disabled-password \
+  "${USER_NAME}"
 
-ENV HOME "/home/${USER}"
+ENV HOME "${USER_HOME}"
 
-RUN adduser -D "${USER}"
-
-USER "${USER}"
+USER "${USER_NAME}"
 
 WORKDIR "${HOME}"
 
