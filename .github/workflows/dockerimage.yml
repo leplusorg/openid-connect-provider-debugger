@@ -62,14 +62,14 @@ jobs:
         with:
           script: |
             const { VERSION } = process.env
-            github.rest.repos.getReleaseByTag({
+            return github.rest.repos.getReleaseByTag({
               owner: context.repo.owner,
               repo: context.repo.repo,
               tag: `v${VERSION}`,
             }).then(function(result) {
               core.info(JSON.stringify(result))
-              core.info(`Release ${result.data.name} found`)
-              return result.data.name
+              core.info(`Release ${result.data.tag_name} found`)
+              return result.data.tag_name
             }).catch(function(error) {
               if (error.status === 404) {
                 core.info(`Release v${VERSION} not found`)
