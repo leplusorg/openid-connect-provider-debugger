@@ -3,7 +3,7 @@ FROM openresty/openresty:1.25.3.1-alpine@sha256:654e5b4362c9e10880fffbb2a5c7cdf7
 
 HEALTHCHECK CMD ["/usr/bin/curl", "-i", "-s", "-S", "-f", "http://localhost"]
 
-# hadolint ignore=DL3018
+# hadolint ignore=DL3018,DL4006
 RUN apk update \
  && LUA_VERSION=$(echo /usr/local/openresty/pod/lua-[0-9]*.[0-9]*.[0-9]* | sed -e 's!^/usr/local/openresty/pod/lua-!!; s/\.[0-9]*$//') \
  && echo "LUA_VERSION=${LUA_VERSION}" \
