@@ -6,11 +6,11 @@
  
 +error_log /dev/stderr debug;
 +
-+env OIDC_CLIENT_ID;
-+env OIDC_CLIENT_SECRET;
-+env OIDC_DISCOVERY;
-+env OIDC_REDIRECT_URI;
-+env OIDC_SSL_VERIFY;
++env oidc_client_id;
++env oidc_client_secret;
++env oidc_discovery;
++env oidc_redirect_uri;
++env oidc_ssl_verify;
 +
  #error_log  logs/error.log;
  #error_log  logs/error.log  notice;
