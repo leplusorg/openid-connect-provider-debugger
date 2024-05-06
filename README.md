@@ -1,7 +1,11 @@
 # OpenID Connect provider debugger
 
 A docker image to test and troubleshoot OpenID Connect (OIDC)
-Providers (OP) using a simple Relying Party (RP).
+Providers (OP). This containers provides a minimalist Relying Party
+(RP) with verbose logs enabled including all HTTP requests and
+responses. Used in conjuction with the network logs of your web
+browser, it provides a full picture of the OP's behavior to help
+understand and troubleshoot the OIDC flow.
 
 [![Dockerfile](https://img.shields.io/badge/GitHub-Dockerfile-blue)](https://github.com/leplusorg/openid-connect-provider-debugger/blob/main/openid-connect-provider-debugger/Dockerfile)
 [![ShellCheck](https://github.com/leplusorg/openid-connect-provider-debugger/workflows/ShellCheck/badge.svg)](https://github.com/leplusorg/openid-connect-provider-debugger/actions?query=workflow:"ShellCheck")
@@ -155,27 +159,27 @@ Keycloak as a local OpenID Connect Provider.
 Launch Keycloak using the following command (choosing the desired
 username and password):
 ```bash
-docker run -i -e KEYCLOAK_USER=<usename> -e KEYCLOAK_PASSWORD=<password> -p 8081:8080 jboss/keycloak
+docker run -i -e KEYCLOAK_ADMIN=<usename> -e KEYCLOAK_ADMIN_PASSWORD=<password> -p 8081:8080 quay.io/keycloak/keycloak:latest start-dev
 ```
 
 Then go to the Keycloak admin console at
-<http://localhost:8081/auth/admin/master/console/#/realms/master/clients>
+<http://localhost:8081/admin/master/console/#/master/clients>
 and authenticate using the username and password chosen in the above
 command.
 
 Click the "Create" button to create a new client. Choose a client ID
-and click "Save". On the next screen, choose the value "confidential"
-for the "Access Type". Then you need to provide the "Valid Redirect
-URIs". Put here the value <http://localhost:8080/*> assuming that you
-will be running the debugger on port 8080 (see "Run" section above for
-details). Click "Save". Then go to the "Credentials" tab and copy the
-client secret.
+and click "Next". On the next screen, toggle on the Client
+authentication then click Next again. Then on the
+final screen you need to provide the "Valid Redirect URIs". Put here
+the value <http://localhost:8080/*> assuming that you will be running
+the debugger on port 8080 (see "Run" section above for details). Click
+"Save". Then go to the "Credentials" tab and copy the client secret.
 
 Now you can run the debugger (see "Run" section above for
 details). The client ID is the value that you just chose when creating
 the client in Keycloak. The client secret is the value that you copied
 from the Credentials tab. The OpenID Connect Discovery URL will be
-<http://192.168.0.1:8081/auth/realms/master/.well-known/openid-configuration>
+<http://192.168.0.1:8081/realms/master/.well-known/openid-configuration>
 where you need to replace the IP address by your local machine network
 address. You need to use an IP address that works both from your local
 machine and from inside the debugger docker container (for the
