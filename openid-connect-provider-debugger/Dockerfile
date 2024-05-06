@@ -5,11 +5,14 @@ HEALTHCHECK CMD ["/usr/bin/curl", "-i", "-s", "-S", "-f", "http://localhost"]
 
 # hadolint ignore=DL3018
 RUN apk update \
- && apk --no-cache add curl patch perl \
+ && LUA_VERSION=$(echo /usr/local/openresty/pod/lua-[0-9]*.[0-9]*.[0-9]* | sed -e 's!^/usr/local/openresty/pod/lua-!!; s/\.[0-9]*$//') \
+ && echo "LUA_VERSION=${LUA_VERSION}" \
+ && LUA_INCDIR=$(echo /usr/local/openresty/luajit/include/luajit-*) \
+ && echo "LUA_INCDIR=${LUA_INCDIR}" \
+ && apk --no-cache add curl "luarocks${LUA_VERSION}" patch \
  && rm -rf /var/cache/apk/* \
- && opm install bungle/lua-resty-session \
- && opm install cdbattags/lua-resty-jwt \
- && opm install zmartzone/lua-resty-openidc
+ && "luarocks-${LUA_VERSION}" config variables.LUA_INCDIR "${LUA_INCDIR}" \
+ && "luarocks-${LUA_VERSION}" install lua-resty-openidc
 
 COPY nginx.conf.patch /usr/local/openresty/nginx/conf/nginx.conf.patch
 
