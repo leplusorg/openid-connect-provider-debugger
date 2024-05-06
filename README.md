@@ -8,7 +8,6 @@ browser, it provides a full picture of the OP's behavior to help
 understand and troubleshoot the OIDC flow.
 
 [![Dockerfile](https://img.shields.io/badge/GitHub-Dockerfile-blue)](https://github.com/leplusorg/openid-connect-provider-debugger/blob/main/openid-connect-provider-debugger/Dockerfile)
-[![ShellCheck](https://github.com/leplusorg/openid-connect-provider-debugger/workflows/ShellCheck/badge.svg)](https://github.com/leplusorg/openid-connect-provider-debugger/actions?query=workflow:"ShellCheck")
 [![Docker Build](https://github.com/leplusorg/openid-connect-provider-debugger/workflows/Docker/badge.svg)](https://github.com/leplusorg/openid-connect-provider-debugger/actions?query=workflow:"Docker")
 [![Docker Stars](https://img.shields.io/docker/stars/leplusorg/openid-connect-provider-debugger)](https://hub.docker.com/r/leplusorg/openid-connect-provider-debugger)
 [![Docker Pulls](https://img.shields.io/docker/pulls/leplusorg/openid-connect-provider-debugger)](https://hub.docker.com/r/leplusorg/openid-connect-provider-debugger)
