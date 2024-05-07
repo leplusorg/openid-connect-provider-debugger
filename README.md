@@ -48,8 +48,8 @@ A successful sign in would result in the display of a JSON document like this on
 ```json
 {
     "options": {
-        "client_id": "debugger",
-        "discovery": "http:\/\/192.168.1.10:8081\/realms\/master\/.well-known\/openid-configuration",
+        "client_id": "id",
+        "discovery": "http:\/\/192.168.0.1:8081\/realms\/master\/.well-known\/openid-configuration",
         "redirect_uri": "http:\/\/localhost:8080\/login",
         "ssl_verify": "no",
         "client_secret": "835e0717-e0c8-4b57-b044-295fa0e3f61b"
@@ -57,7 +57,7 @@ A successful sign in would result in the display of a JSON document like this on
     "id_token": {
         "azp": "debugger",
         "iat": 1590619714,
-        "iss": "http:\/\/192.168.1.10:8081\/realms\/master",
+        "iss": "http:\/\/192.168.0.1:8081\/realms\/master",
         "aud": "debugger",
         "nonce": "1e23537bb06f2b4e324d12d8d51f2c6b",
         "exp": 1590619774,
@@ -85,7 +85,7 @@ You can use <https://jwt.io> to decode the access token.
 
 If you prefer to skip the UI, you can pass directly the required
 values as URL parameters using the following syntax:
-<http://localhost:8080/debug?oidc_client_id=client_id&oidc_client_secret=client_secret&oidc_discovery=discovery_url&oidc_redirect_uri=redirect_uri>
+<http://localhost:8080/debug?oidc_client_id=id&oidc_client_secret=secret&oidc_discovery=http%3A%2F%2F192.168.0.1%3A8081%2Frealms%2Fmaster%2F.well-known%2Fopenid-configuration&oidc_redirect_uri=http://localhost:8080/login>
 
 See section "Parameters" below for a description of each parameter.
 
@@ -98,7 +98,7 @@ You can pass the parameters to the docker container using environment
 variales like this:
 
 ```bash
-docker run -i -e 'oidc_client_id=<client_id>' -e 'oidc_client_secret=<client_secret>' -e 'oidc_discovery=<discovery_url>' -e 'oidc_redirect_uri=http://localhost:8080/login' -p 8080:80 leplusorg/openid-connect-provider-debugger
+docker run -i -e 'oidc_client_id=id' -e 'oidc_client_secret=secret' -e 'oidc_discovery=http://192.168.0.1:8081/realms/master/.well-known/openid-configuration' -e 'oidc_redirect_uri=http://localhost:8080/login' -p 8080:80 leplusorg/openid-connect-provider-debugger
 ```
 
 See section "Parameters" below for a description of each parameter.
@@ -158,7 +158,7 @@ Keycloak as a local OpenID Connect Provider.
 Launch Keycloak using the following command (choosing the desired
 username and password):
 ```bash
-docker run -i -e KEYCLOAK_ADMIN=<usename> -e KEYCLOAK_ADMIN_PASSWORD=<password> -p 8081:8080 quay.io/keycloak/keycloak:latest start-dev
+docker run -i -e 'KEYCLOAK_ADMIN=admin' -e 'KEYCLOAK_ADMIN_PASSWORD=admin' -p 8081:8080 quay.io/keycloak/keycloak:latest start-dev
 ```
 
 Then go to the Keycloak admin console at
@@ -180,10 +180,11 @@ the client in Keycloak. The client secret is the value that you copied
 from the Credentials tab. The OpenID Connect Discovery URL will be
 <http://192.168.0.1:8081/realms/master/.well-known/openid-configuration>
 where you need to replace the IP address by your local machine network
-address. You need to use an IP address that works both from your local
-machine and from inside the debugger docker container (for the
-debugger to be able to connect to the OP to retrieve the tokens). This
-is why you can't use `localhost` or `127.0.0.1`.
+address. You need to use an IP address that works from inside the
+debugger docker container (for the debugger to be able to connect to
+the OP to get the discovery metadata and later retrieve the
+tokens). This is why you can't use `localhost` or `127.0.0.1` which
+the debugger would interpret as itself instead of the provider.
 
 ## Credits
 
