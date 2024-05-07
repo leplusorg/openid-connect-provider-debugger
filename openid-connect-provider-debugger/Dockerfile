@@ -14,14 +14,14 @@ RUN apk update \
  && "luarocks-${LUA_VERSION}" config variables.LUA_INCDIR "${LUA_INCDIR}" \
  && "luarocks-${LUA_VERSION}" install lua-resty-openidc
 
-COPY nginx.conf.patch /usr/local/openresty/nginx/conf/nginx.conf.patch
+COPY nginx.conf.patch /usr/local/openresty/nginx/conf/
 
 RUN patch /usr/local/openresty/nginx/conf/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf.patch \
  && rm -f /usr/local/openresty/nginx/conf/nginx.conf.patch \
  && chmod o+rwx /var/run/openresty
 
-COPY default.conf /etc/nginx/conf.d/default.conf
+COPY default.conf /etc/nginx/conf.d/
 
-COPY index.html /usr/local/openresty/nginx/html/index.html
+COPY index.html error.html /usr/local/openresty/nginx/html/
 
 EXPOSE 80 443
