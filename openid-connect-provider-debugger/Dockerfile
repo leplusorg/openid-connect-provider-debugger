@@ -1,5 +1,5 @@
 # checkov:skip=CKV_DOCKER_3
-FROM openresty/openresty:1.25.3.1-alpine-fat@sha256:b60db904c43ac309ab0a54c997e19b84fb70cc456142febe7e2767a8b37383ee
+FROM openresty/openresty:1.25.3.1-alpine-fat@sha256:17868b5ec232561bc64862160296c3f8480650bc4cbc19b88e056750bd78f527
 
 HEALTHCHECK CMD ["/usr/bin/curl", "-i", "-s", "-S", "-f", "http://localhost"]
 
