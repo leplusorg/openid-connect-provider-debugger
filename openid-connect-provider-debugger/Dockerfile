@@ -1,18 +1,13 @@
 # checkov:skip=CKV_DOCKER_3
-FROM openresty/openresty:1.25.3.1-alpine@sha256:bb29ac9303db64bf2736766fa2b2b9904b50514f9e3733ce81e1b8d0e65d2a69
+FROM openresty/openresty:1.25.3.1-alpine-fat@sha256:b60db904c43ac309ab0a54c997e19b84fb70cc456142febe7e2767a8b37383ee
 
 HEALTHCHECK CMD ["/usr/bin/curl", "-i", "-s", "-S", "-f", "http://localhost"]
 
 # hadolint ignore=DL3018,DL4006
 RUN apk update \
- && LUA_VERSION=$(echo /usr/local/openresty/pod/lua-[0-9]*.[0-9]*.[0-9]* | sed -e 's!^/usr/local/openresty/pod/lua-!!; s/\.[0-9]*$//') \
- && echo "LUA_VERSION=${LUA_VERSION}" \
- && LUA_INCDIR=$(echo /usr/local/openresty/luajit/include/luajit-*) \
- && echo "LUA_INCDIR=${LUA_INCDIR}" \
- && apk --no-cache add curl "luarocks${LUA_VERSION}" patch \
+ && apk --no-cache add curl patch \
  && rm -rf /var/cache/apk/* \
- && "luarocks-${LUA_VERSION}" config variables.LUA_INCDIR "${LUA_INCDIR}" \
- && "luarocks-${LUA_VERSION}" install lua-resty-openidc
+ && luarocks install lua-resty-openidc
 
 COPY nginx.conf.patch /usr/local/openresty/nginx/conf/
 
