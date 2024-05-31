@@ -9,7 +9,7 @@ COPY nginx.conf.patch /usr/local/openresty/nginx/conf/
 RUN apk update \
  && apk --no-cache add curl patch \
  && rm -rf /var/cache/apk/* \
- && /usr/local/openresty/luajit/bin/luarocks install lua-resty-openidc
+ && /usr/local/openresty/luajit/bin/luarocks install lua-resty-openidc \
  && patch /usr/local/openresty/nginx/conf/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf.patch \
  && rm -f /usr/local/openresty/nginx/conf/nginx.conf.patch
 
