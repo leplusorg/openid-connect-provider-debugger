@@ -150,6 +150,14 @@ Mandatory: yes
 
 Default: none
 
+### oidc_scope
+
+Description: the OpenID Connect scope (e.g. "openid email profile").
+
+Mandatory: no
+
+Default: "openid email profile" (coming from the https://github.com/zmartzone/lua-resty-openidc dependency).
+
 ## Test
 
 To test the debugger (or any other Relying Party), you can use JBoss
