@@ -159,6 +159,41 @@ Mandatory: no
 
 Default: "openid email profile" (coming from the https://github.com/zmartzone/lua-resty-openidc dependency).
 
+### oidc_post_logout_uri
+
+Description: the OpenID Connect post_logout_redirect_uri (if you running the
+instance locally on port 8080, it could be <http://localhost:8080/status>).
+You might have to configure this URI in the OP's admin console.
+
+Mandatory: no
+
+Default: none.
+
+## Endpoints
+
+The following endpoints are available: `/debug`, `/login`, `/logout`, `/status`
+
+`/debug` is used to initiate and end the OpenID Connect flow. If the
+user is authenticated, it will display the JSON document containing the 
+tokens and user information.
+
+`/login` is the redirect URI where the OP will send the user after
+authentication. It will build up the session state and redirect the
+user back to the /debug endpoint.
+
+`/logout` is used to end the session and log the user out of the OP.
+If a post_logout_redirect_uri (oidc_post_logout_uri argument) is
+provided, the user will be redirected to that url from the OP.
+
+`/status` is a simple page that displays the current session state as a
+JSON document. There are three possible states: "not_authenticated",
+"authenticated" and "session_active_but_no_user". This might be a good
+place for a post_logout_redirect_uri.
+
+Note: `/debug`, `/login` and `/logout` share all the same code. `/debug`
+and `/login` behave absolutely identical, while `/logout` behaves
+differently because of the used OIDC lua library.
+
 ## Test
 
 To test the debugger (or any other Relying Party), you can use JBoss
