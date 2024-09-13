@@ -1,6 +1,6 @@
 --- /usr/local/openresty/nginx/conf/nginx.conf	2020-05-14 13:27:29.168451660 -0700
 +++ /usr/local/openresty/nginx/conf/nginx.conf	2020-05-14 13:28:29.583197857 -0700
-@@ -24,6 +24,16 @@
+@@ -24,6 +24,17 @@
 
 
  
@@ -13,6 +13,7 @@
 +env oidc_ssl_verify;
 +env oidc_scope;
 +env oidc_post_logout_uri;
++env page_content_type;
 +
  #error_log  logs/error.log;
  #error_log  logs/error.log  notice;

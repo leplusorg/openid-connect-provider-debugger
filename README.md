@@ -169,6 +169,16 @@ Mandatory: no
 
 Default: none.
 
+### page_content_type
+
+Description: the content type of the resulting json (e.g. "application/json").
+E.g. for cypress tests you might want to set this to "text/html".
+Note: this does not change the content of the result only the content-type header.
+
+Mandatory: no
+
+Default: "application/json".
+
 ## Endpoints
 
 The following endpoints are available: `/debug`, `/login`, `/logout`, `/status`
