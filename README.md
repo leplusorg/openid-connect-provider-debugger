@@ -45,37 +45,38 @@ details (including the raw tokens) in the logs printed by the docker
 container.
 
 A successful sign in would result in the display of a JSON document like this one:
+
 ```json
 {
-    "options": {
-        "client_id": "id",
-        "discovery": "http:\/\/192.168.0.1:8081\/realms\/master\/.well-known\/openid-configuration",
-        "redirect_uri": "http:\/\/localhost:8080\/login",
-        "ssl_verify": "no",
-        "client_secret": "835e0717-e0c8-4b57-b044-295fa0e3f61b"
-    },
-    "id_token": {
-        "azp": "debugger",
-        "iat": 1590619714,
-        "iss": "http:\/\/192.168.0.1:8081\/realms\/master",
-        "aud": "debugger",
-        "nonce": "1e23537bb06f2b4e324d12d8d51f2c6b",
-        "exp": 1590619774,
-        "jti": "9a1b5cf6-87ab-4557-a4aa-b771a67af1db",
-        "sub": "38b4a290-5332-4c4c-bb8f-46eb2826c7ea",
-        "email_verified": false,
-        "acr": "1",
-        "preferred_username": "tom",
-        "auth_time": 1590619714,
-        "session_state": "fb3edcc2-f5b3-47fa-84f6-60cbae792cde",
-        "typ": "ID"
-    },
-    "user": {
-        "email_verified": false,
-        "preferred_username": "tom",
-        "sub": "38b4a290-5332-4c4c-bb8f-46eb2826c7ea"
-    },
-    "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJwbjdtd1B1WDZ5ZjBvSHEtTDFiZ2l6T2FVeGs5aDlGaU8ycjlMcV9LYkNRIn0.eyJleHAiOjE1OTA2MTk3NzQsImlhdCI6MTU5MDYxOTcxNCwiYXV0aF90aW1lIjoxNTkwNjE5NzE0LCJqdGkiOiI5MTk0ODgxZS05ZGMzLTQ1YjItOWExOS1mZDFlZTk3NDY4NjciLCJpc3MiOiJodHRwOi8vMTkyLjE2OC4xLjEwOjgwODEvYXV0aC9yZWFsbXMvbWFzdGVyIiwiYXVkIjpbIm1hc3Rlci1yZWFsbSIsImFjY291bnQiXSwic3ViIjoiMzhiNGEyOTAtNTMzMi00YzRjLWJiOGYtNDZlYjI4MjZjN2VhIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiZGVidWdnZXIiLCJub25jZSI6IjFlMjM1MzdiYjA2ZjJiNGUzMjRkMTJkOGQ1MWYyYzZiIiwic2Vzc2lvbl9zdGF0ZSI6ImZiM2VkY2MyLWY1YjMtNDdmYS04NGY2LTYwY2JhZTc5MmNkZSIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiY3JlYXRlLXJlYWxtIiwib2ZmbGluZV9hY2Nlc3MiLCJhZG1pbiIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsibWFzdGVyLXJlYWxtIjp7InJvbGVzIjpbInZpZXctcmVhbG0iLCJ2aWV3LWlkZW50aXR5LXByb3ZpZGVycyIsIm1hbmFnZS1pZGVudGl0eS1wcm92aWRlcnMiLCJpbXBlcnNvbmF0aW9uIiwiY3JlYXRlLWNsaWVudCIsIm1hbmFnZS11c2VycyIsInF1ZXJ5LXJlYWxtcyIsInZpZXctYXV0aG9yaXphdGlvbiIsInF1ZXJ5LWNsaWVudHMiLCJxdWVyeS11c2VycyIsIm1hbmFnZS1ldmVudHMiLCJtYW5hZ2UtcmVhbG0iLCJ2aWV3LWV2ZW50cyIsInZpZXctdXNlcnMiLCJ2aWV3LWNsaWVudHMiLCJtYW5hZ2UtYXV0aG9yaXphdGlvbiIsIm1hbmFnZS1jbGllbnRzIiwicXVlcnktZ3JvdXBzIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0b20ifQ.NCFiSW3Tt7qQCtE8g46kLg-oSqKiDseg4NCwV1kVPoD5yFa9XunooVE3eO1XgKACb_FFzrxEMYfmStpvypI7VFu-XO5ULkrbXElhDtMmVbEn-aqNILHs_h_Ewo1JdCa-gNL9zav5QhmcwmIUpNYsDsQxm-bN86JgQO2f8ZJ497K6DpPFnIrhd0eT0fa4iw7Tx64PdIDUPXqqYrR2nh0P-D0dkkVTSu-EI14uuwwClYy5Pq9EeKfX9M8SqUp81gprhty-9PneDcFjBpEgFRCfFhecSBn0_c1urlx5QTbN96PnCWlH2t-aGLfRHD8oJcv-xztHt02Zhy-L2B3z-bCfSQ"
+  "options": {
+    "client_id": "id",
+    "discovery": "http://192.168.0.1:8081/realms/master/.well-known/openid-configuration",
+    "redirect_uri": "http://localhost:8080/login",
+    "ssl_verify": "no",
+    "client_secret": "835e0717-e0c8-4b57-b044-295fa0e3f61b"
+  },
+  "id_token": {
+    "azp": "debugger",
+    "iat": 1590619714,
+    "iss": "http://192.168.0.1:8081/realms/master",
+    "aud": "debugger",
+    "nonce": "1e23537bb06f2b4e324d12d8d51f2c6b",
+    "exp": 1590619774,
+    "jti": "9a1b5cf6-87ab-4557-a4aa-b771a67af1db",
+    "sub": "38b4a290-5332-4c4c-bb8f-46eb2826c7ea",
+    "email_verified": false,
+    "acr": "1",
+    "preferred_username": "tom",
+    "auth_time": 1590619714,
+    "session_state": "fb3edcc2-f5b3-47fa-84f6-60cbae792cde",
+    "typ": "ID"
+  },
+  "user": {
+    "email_verified": false,
+    "preferred_username": "tom",
+    "sub": "38b4a290-5332-4c4c-bb8f-46eb2826c7ea"
+  },
+  "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJwbjdtd1B1WDZ5ZjBvSHEtTDFiZ2l6T2FVeGs5aDlGaU8ycjlMcV9LYkNRIn0.eyJleHAiOjE1OTA2MTk3NzQsImlhdCI6MTU5MDYxOTcxNCwiYXV0aF90aW1lIjoxNTkwNjE5NzE0LCJqdGkiOiI5MTk0ODgxZS05ZGMzLTQ1YjItOWExOS1mZDFlZTk3NDY4NjciLCJpc3MiOiJodHRwOi8vMTkyLjE2OC4xLjEwOjgwODEvYXV0aC9yZWFsbXMvbWFzdGVyIiwiYXVkIjpbIm1hc3Rlci1yZWFsbSIsImFjY291bnQiXSwic3ViIjoiMzhiNGEyOTAtNTMzMi00YzRjLWJiOGYtNDZlYjI4MjZjN2VhIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiZGVidWdnZXIiLCJub25jZSI6IjFlMjM1MzdiYjA2ZjJiNGUzMjRkMTJkOGQ1MWYyYzZiIiwic2Vzc2lvbl9zdGF0ZSI6ImZiM2VkY2MyLWY1YjMtNDdmYS04NGY2LTYwY2JhZTc5MmNkZSIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiY3JlYXRlLXJlYWxtIiwib2ZmbGluZV9hY2Nlc3MiLCJhZG1pbiIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsibWFzdGVyLXJlYWxtIjp7InJvbGVzIjpbInZpZXctcmVhbG0iLCJ2aWV3LWlkZW50aXR5LXByb3ZpZGVycyIsIm1hbmFnZS1pZGVudGl0eS1wcm92aWRlcnMiLCJpbXBlcnNvbmF0aW9uIiwiY3JlYXRlLWNsaWVudCIsIm1hbmFnZS11c2VycyIsInF1ZXJ5LXJlYWxtcyIsInZpZXctYXV0aG9yaXphdGlvbiIsInF1ZXJ5LWNsaWVudHMiLCJxdWVyeS11c2VycyIsIm1hbmFnZS1ldmVudHMiLCJtYW5hZ2UtcmVhbG0iLCJ2aWV3LWV2ZW50cyIsInZpZXctdXNlcnMiLCJ2aWV3LWNsaWVudHMiLCJtYW5hZ2UtYXV0aG9yaXphdGlvbiIsIm1hbmFnZS1jbGllbnRzIiwicXVlcnktZ3JvdXBzIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0b20ifQ.NCFiSW3Tt7qQCtE8g46kLg-oSqKiDseg4NCwV1kVPoD5yFa9XunooVE3eO1XgKACb_FFzrxEMYfmStpvypI7VFu-XO5ULkrbXElhDtMmVbEn-aqNILHs_h_Ewo1JdCa-gNL9zav5QhmcwmIUpNYsDsQxm-bN86JgQO2f8ZJ497K6DpPFnIrhd0eT0fa4iw7Tx64PdIDUPXqqYrR2nh0P-D0dkkVTSu-EI14uuwwClYy5Pq9EeKfX9M8SqUp81gprhty-9PneDcFjBpEgFRCfFhecSBn0_c1urlx5QTbN96PnCWlH2t-aGLfRHD8oJcv-xztHt02Zhy-L2B3z-bCfSQ"
 }
 ```
 
@@ -157,6 +158,7 @@ Keycloak as a local OpenID Connect Provider.
 
 Launch Keycloak using the following command (choosing the desired
 username and password):
+
 ```bash
 docker run -i -e 'KEYCLOAK_ADMIN=admin' -e 'KEYCLOAK_ADMIN_PASSWORD=admin' -p 8081:8080 quay.io/keycloak/keycloak:latest start-dev
 ```
