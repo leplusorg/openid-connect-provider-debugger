@@ -1,4 +1,4 @@
-FROM openresty/openresty:1.25.3.1-alpine@sha256:bb29ac9303db64bf2736766fa2b2b9904b50514f9e3733ce81e1b8d0e65d2a69
+FROM openresty/openresty:1.25.3.2-alpine@sha256:6ab92dfa1f6ff59f9a081d58d6baa6d782b4fe2eed81547dfdf6b58c5ae9f103
 
 HEALTHCHECK NONE
 

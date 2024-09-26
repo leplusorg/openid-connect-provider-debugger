@@ -14,11 +14,11 @@ name: OSV-Scanner
 
 on:
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   schedule:
-    - cron: '0 0 * * 0'
+    - cron: "0 0 * * 0"
   workflow_dispatch:
 
 permissions:
@@ -31,7 +31,7 @@ permissions:
 
 jobs:
   scan:
-    uses: "google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@678a866dcba398c8ed0124a09928d250f187b52a" # v1.8.4
+    uses: "google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@f0e6719deb666cd19a0b56bc56d01161bd848b4f" # v1.8.5
     with:
       # Example of specifying custom arguments
       scan-args: |-
