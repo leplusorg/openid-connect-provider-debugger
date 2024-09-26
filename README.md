@@ -50,15 +50,15 @@ A successful sign in would result in the display of a JSON document like this on
 {
   "options": {
     "client_id": "id",
-    "discovery": "http:\/\/192.168.0.1:8081\/realms\/master\/.well-known\/openid-configuration",
-    "redirect_uri": "http:\/\/localhost:8080\/login",
+    "discovery": "http://192.168.0.1:8081/realms/master/.well-known/openid-configuration",
+    "redirect_uri": "http://localhost:8080/login",
     "ssl_verify": "no",
     "client_secret": "835e0717-e0c8-4b57-b044-295fa0e3f61b"
   },
   "id_token": {
     "azp": "debugger",
     "iat": 1590619714,
-    "iss": "http:\/\/192.168.0.1:8081\/realms\/master",
+    "iss": "http://192.168.0.1:8081/realms/master",
     "aud": "debugger",
     "nonce": "1e23537bb06f2b4e324d12d8d51f2c6b",
     "exp": 1590619774,
@@ -158,7 +158,7 @@ Description: the OpenID Connect scope (e.g. "openid email profile").
 
 Mandatory: no
 
-Default: "openid email profile" (coming from the https://github.com/zmartzone/lua-resty-openidc dependency).
+Default: "openid email profile" (coming from the <https://github.com/zmartzone/lua-resty-openidc dependency>).
 
 ### oidc_post_logout_uri
 
@@ -172,20 +172,20 @@ Default: none.
 
 ### page_content_type
 
-Description: the content type of the resulting json (e.g. "application/json").
-E.g. for cypress tests you might want to set this to "text/html".
+Description: the content type of the resulting json (e.g. `application/json`).
+E.g. for cypress tests you might want to set this to `text/html`.
 Note: this does not change the content of the result only the content-type header.
 
 Mandatory: no
 
-Default: "application/json".
+Default: `application/json`
 
 ## Endpoints
 
 The following endpoints are available: `/debug`, `/login`, `/logout`, `/status`
 
 `/debug` is used to initiate and end the OpenID Connect flow. If the
-user is authenticated, it will display the JSON document containing the 
+user is authenticated, it will display the JSON document containing the
 tokens and user information.
 
 `/login` is the redirect URI where the OP will send the user after
@@ -194,7 +194,7 @@ user back to the /debug endpoint.
 
 `/logout` is used to end the session and log the user out of the OP.
 If a post_logout_redirect_uri (oidc_post_logout_uri argument) is
-provided, the user will be redirected to that url from the OP.
+provided, the user will be redirected to that URL from the OP.
 
 `/status` is a simple page that displays the current session state as a
 JSON document. There are three possible states: "not_authenticated",
