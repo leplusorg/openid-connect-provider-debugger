@@ -158,7 +158,7 @@ Description: the OpenID Connect scope (e.g. "openid email profile").
 
 Mandatory: no
 
-Default: "openid email profile" (coming from the <https://github.com/zmartzone/lua-resty-openidc dependency>).
+Default: "openid email profile" (coming from the <https://github.com/zmartzone/lua-resty-openidc> dependency).
 
 ### oidc_post_logout_uri
 
