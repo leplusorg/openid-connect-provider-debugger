@@ -76,7 +76,8 @@ A successful sign in would result in the display of a JSON document like this on
     "preferred_username": "tom",
     "sub": "38b4a290-5332-4c4c-bb8f-46eb2826c7ea"
   },
-  "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJwbjdtd1B1WDZ5ZjBvSHEtTDFiZ2l6T2FVeGs5aDlGaU8ycjlMcV9LYkNRIn0.eyJleHAiOjE1OTA2MTk3NzQsImlhdCI6MTU5MDYxOTcxNCwiYXV0aF90aW1lIjoxNTkwNjE5NzE0LCJqdGkiOiI5MTk0ODgxZS05ZGMzLTQ1YjItOWExOS1mZDFlZTk3NDY4NjciLCJpc3MiOiJodHRwOi8vMTkyLjE2OC4xLjEwOjgwODEvYXV0aC9yZWFsbXMvbWFzdGVyIiwiYXVkIjpbIm1hc3Rlci1yZWFsbSIsImFjY291bnQiXSwic3ViIjoiMzhiNGEyOTAtNTMzMi00YzRjLWJiOGYtNDZlYjI4MjZjN2VhIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiZGVidWdnZXIiLCJub25jZSI6IjFlMjM1MzdiYjA2ZjJiNGUzMjRkMTJkOGQ1MWYyYzZiIiwic2Vzc2lvbl9zdGF0ZSI6ImZiM2VkY2MyLWY1YjMtNDdmYS04NGY2LTYwY2JhZTc5MmNkZSIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiY3JlYXRlLXJlYWxtIiwib2ZmbGluZV9hY2Nlc3MiLCJhZG1pbiIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsibWFzdGVyLXJlYWxtIjp7InJvbGVzIjpbInZpZXctcmVhbG0iLCJ2aWV3LWlkZW50aXR5LXByb3ZpZGVycyIsIm1hbmFnZS1pZGVudGl0eS1wcm92aWRlcnMiLCJpbXBlcnNvbmF0aW9uIiwiY3JlYXRlLWNsaWVudCIsIm1hbmFnZS11c2VycyIsInF1ZXJ5LXJlYWxtcyIsInZpZXctYXV0aG9yaXphdGlvbiIsInF1ZXJ5LWNsaWVudHMiLCJxdWVyeS11c2VycyIsIm1hbmFnZS1ldmVudHMiLCJtYW5hZ2UtcmVhbG0iLCJ2aWV3LWV2ZW50cyIsInZpZXctdXNlcnMiLCJ2aWV3LWNsaWVudHMiLCJtYW5hZ2UtYXV0aG9yaXphdGlvbiIsIm1hbmFnZS1jbGllbnRzIiwicXVlcnktZ3JvdXBzIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0b20ifQ.NCFiSW3Tt7qQCtE8g46kLg-oSqKiDseg4NCwV1kVPoD5yFa9XunooVE3eO1XgKACb_FFzrxEMYfmStpvypI7VFu-XO5ULkrbXElhDtMmVbEn-aqNILHs_h_Ewo1JdCa-gNL9zav5QhmcwmIUpNYsDsQxm-bN86JgQO2f8ZJ497K6DpPFnIrhd0eT0fa4iw7Tx64PdIDUPXqqYrR2nh0P-D0dkkVTSu-EI14uuwwClYy5Pq9EeKfX9M8SqUp81gprhty-9PneDcFjBpEgFRCfFhecSBn0_c1urlx5QTbN96PnCWlH2t-aGLfRHD8oJcv-xztHt02Zhy-L2B3z-bCfSQ"
+  "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJwbjdtd1B1WDZ5ZjBvSHEtTDFiZ2l6T2FVeGs5aDlGaU8ycjlMcV9LYkNRIn0.eyJleHAiOjE1OTA2MTk3NzQsImlhdCI6MTU5MDYxOTcxNCwiYXV0aF90aW1lIjoxNTkwNjE5NzE0LCJqdGkiOiI5MTk0ODgxZS05ZGMzLTQ1YjItOWExOS1mZDFlZTk3NDY4NjciLCJpc3MiOiJodHRwOi8vMTkyLjE2OC4xLjEwOjgwODEvYXV0aC9yZWFsbXMvbWFzdGVyIiwiYXVkIjpbIm1hc3Rlci1yZWFsbSIsImFjY291bnQiXSwic3ViIjoiMzhiNGEyOTAtNTMzMi00YzRjLWJiOGYtNDZlYjI4MjZjN2VhIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiZGVidWdnZXIiLCJub25jZSI6IjFlMjM1MzdiYjA2ZjJiNGUzMjRkMTJkOGQ1MWYyYzZiIiwic2Vzc2lvbl9zdGF0ZSI6ImZiM2VkY2MyLWY1YjMtNDdmYS04NGY2LTYwY2JhZTc5MmNkZSIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiY3JlYXRlLXJlYWxtIiwib2ZmbGluZV9hY2Nlc3MiLCJhZG1pbiIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsibWFzdGVyLXJlYWxtIjp7InJvbGVzIjpbInZpZXctcmVhbG0iLCJ2aWV3LWlkZW50aXR5LXByb3ZpZGVycyIsIm1hbmFnZS1pZGVudGl0eS1wcm92aWRlcnMiLCJpbXBlcnNvbmF0aW9uIiwiY3JlYXRlLWNsaWVudCIsIm1hbmFnZS11c2VycyIsInF1ZXJ5LXJlYWxtcyIsInZpZXctYXV0aG9yaXphdGlvbiIsInF1ZXJ5LWNsaWVudHMiLCJxdWVyeS11c2VycyIsIm1hbmFnZS1ldmVudHMiLCJtYW5hZ2UtcmVhbG0iLCJ2aWV3LWV2ZW50cyIsInZpZXctdXNlcnMiLCJ2aWV3LWNsaWVudHMiLCJtYW5hZ2UtYXV0aG9yaXphdGlvbiIsIm1hbmFnZS1jbGllbnRzIiwicXVlcnktZ3JvdXBzIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0b20ifQ.NCFiSW3Tt7qQCtE8g46kLg-oSqKiDseg4NCwV1kVPoD5yFa9XunooVE3eO1XgKACb_FFzrxEMYfmStpvypI7VFu-XO5ULkrbXElhDtMmVbEn-aqNILHs_h_Ewo1JdCa-gNL9zav5QhmcwmIUpNYsDsQxm-bN86JgQO2f8ZJ497K6DpPFnIrhd0eT0fa4iw7Tx64PdIDUPXqqYrR2nh0P-D0dkkVTSu-EI14uuwwClYy5Pq9EeKfX9M8SqUp81gprhty-9PneDcFjBpEgFRCfFhecSBn0_c1urlx5QTbN96PnCWlH2t-aGLfRHD8oJcv-xztHt02Zhy-L2B3z-bCfSQ",
+  "id_token_encoded": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTA2MTk3NzQsImlhdCI6MTU5MDYxOTcxNCwiaXNzIjoiaHR0cDovLzE5Mi4xNjguMS4xMDo4MDgxL2F1dGgvcmVhbG1zL21hc3RlciIsImF1ZCI6WyJtYXN0ZXItcmVhbG0iLCJhY2NvdW50Il0sInN1YiI6IjM4YjRhMjkwLTUzMzItNGM0Yy1iYjhmLTQ2ZWIyODI2YzdlYSIsIm5hbWUiOiJUaG9tYXMgTGVwbHVzIiwiZ2l2ZW5fbmFtZSI6IlRob21hcyIsImZhbWlseV9uYW1lIjoiTGVwbHVzIn0.u4otizxDCTxbX4mSYypvC-fzrnZri12I1uQrcc-wv3Y"
 }
 ```
 
@@ -150,6 +151,59 @@ running the instance locally on port 8080, it would be
 Mandatory: yes
 
 Default: none
+
+### oidc_scope
+
+Description: the OpenID Connect scope (e.g. "openid email profile").
+
+Mandatory: no
+
+Default: "openid email profile" (coming from the <https://github.com/zmartzone/lua-resty-openidc> dependency).
+
+### oidc_post_logout_uri
+
+Description: the OpenID Connect post_logout_redirect_uri (if you running the
+instance locally on port 8080, it could be <http://localhost:8080/status>).
+You might have to configure this URI in the OP's admin console.
+
+Mandatory: no
+
+Default: none.
+
+### page_content_type
+
+Description: the content type of the resulting json (e.g. `application/json`).
+E.g. for cypress tests you might want to set this to `text/html`.
+Note: this does not change the content of the result only the content-type header.
+
+Mandatory: no
+
+Default: `application/json`
+
+## Endpoints
+
+The following endpoints are available: `/debug`, `/login`, `/logout`, `/status`
+
+`/debug` is used to initiate and end the OpenID Connect flow. If the
+user is authenticated, it will display the JSON document containing the
+tokens and user information.
+
+`/login` is the redirect URI where the OP will send the user after
+authentication. It will build up the session state and redirect the
+user back to the /debug endpoint.
+
+`/logout` is used to end the session and log the user out of the OP.
+If a post_logout_redirect_uri (oidc_post_logout_uri argument) is
+provided, the user will be redirected to that URL from the OP.
+
+`/status` is a simple page that displays the current session state as a
+JSON document. There are three possible states: "not_authenticated",
+"authenticated" and "session_active_but_no_user". This might be a good
+place for a post_logout_redirect_uri.
+
+Note: `/debug`, `/login` and `/logout` share all the same code. `/debug`
+and `/login` behave absolutely identical, while `/logout` behaves
+differently because of the used OIDC lua library.
 
 ## Test
 
