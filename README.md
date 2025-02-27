@@ -12,6 +12,8 @@ understand and troubleshoot the OIDC flow.
 [![Docker Stars](https://img.shields.io/docker/stars/leplusorg/openid-connect-provider-debugger)](https://hub.docker.com/r/leplusorg/openid-connect-provider-debugger)
 [![Docker Pulls](https://img.shields.io/docker/pulls/leplusorg/openid-connect-provider-debugger)](https://hub.docker.com/r/leplusorg/openid-connect-provider-debugger)
 [![Docker Version](https://img.shields.io/docker/v/leplusorg/openid-connect-provider-debugger?sort=semver)](https://hub.docker.com/r/leplusorg/openid-connect-provider-debugger)
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/10077/badge)](https://bestpractices.coreinfrastructure.org/projects/10077)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/leplusorg/openid-connect-provider-debugger/badge)](https://securityscorecards.dev/viewer/?uri=github.com/leplusorg/openid-connect-provider-debugger)
 
 ## Run
 
