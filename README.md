@@ -242,6 +242,17 @@ the OP to get the discovery metadata and later retrieve the
 tokens). This is why you can't use `localhost` or `127.0.0.1` which
 the debugger would interpret as itself instead of the provider.
 
+## Software Bill of Materials (SBOM)
+
+To get the SBOM for the latest image (in SPDX JSON format), use the
+following command:
+
+```bash
+docker buildx imagetools inspect leplusorg/openid-connect-provider-debugger --format '{{ json (index .SBOM "linux/amd64").SPDX }}'
+```
+
+Replace `linux/amd64` by the desired platform (`linux/amd64`, `linux/arm64` etc.).
+
 ## Credits
 
 This project is based on NGINX / OpenResty and all the actual OpenID
