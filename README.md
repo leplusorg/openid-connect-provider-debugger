@@ -29,10 +29,10 @@ should accept (<http://localhost:8080/login> in our example below).
 ### Using the web UI
 
 Once your have provided and gathered the above information, run the
-following docker:
+following Docker command:
 
 ```bash
-docker run -i -p 8080:80 leplusorg/openid-connect-provider-debugger
+docker run -i -p 127.0.0.1:8080:80 leplusorg/openid-connect-provider-debugger
 ```
 
 Finally, open <http://localhost:8080> in your favorite browser and
@@ -43,7 +43,7 @@ flow. Remember that if you are already signed in, you may go through
 the authentication without any prompt. If you authenticate
 successfully, you should see a JSON document containing all the
 information received by the debugger from the OP. You can find more
-details (including the raw tokens) in the logs printed by the docker
+details (including the raw tokens) in the logs printed by the Docker
 container.
 
 A successful sign in would result in the display of a JSON document like this one:
@@ -78,8 +78,8 @@ A successful sign in would result in the display of a JSON document like this on
     "preferred_username": "tom",
     "sub": "38b4a290-5332-4c4c-bb8f-46eb2826c7ea"
   },
-  "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJwbjdtd1B1WDZ5ZjBvSHEtTDFiZ2l6T2FVeGs5aDlGaU8ycjlMcV9LYkNRIn0.eyJleHAiOjE1OTA2MTk3NzQsImlhdCI6MTU5MDYxOTcxNCwiYXV0aF90aW1lIjoxNTkwNjE5NzE0LCJqdGkiOiI5MTk0ODgxZS05ZGMzLTQ1YjItOWExOS1mZDFlZTk3NDY4NjciLCJpc3MiOiJodHRwOi8vMTkyLjE2OC4xLjEwOjgwODEvYXV0aC9yZWFsbXMvbWFzdGVyIiwiYXVkIjpbIm1hc3Rlci1yZWFsbSIsImFjY291bnQiXSwic3ViIjoiMzhiNGEyOTAtNTMzMi00YzRjLWJiOGYtNDZlYjI4MjZjN2VhIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiZGVidWdnZXIiLCJub25jZSI6IjFlMjM1MzdiYjA2ZjJiNGUzMjRkMTJkOGQ1MWYyYzZiIiwic2Vzc2lvbl9zdGF0ZSI6ImZiM2VkY2MyLWY1YjMtNDdmYS04NGY2LTYwY2JhZTc5MmNkZSIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiY3JlYXRlLXJlYWxtIiwib2ZmbGluZV9hY2Nlc3MiLCJhZG1pbiIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsibWFzdGVyLXJlYWxtIjp7InJvbGVzIjpbInZpZXctcmVhbG0iLCJ2aWV3LWlkZW50aXR5LXByb3ZpZGVycyIsIm1hbmFnZS1pZGVudGl0eS1wcm92aWRlcnMiLCJpbXBlcnNvbmF0aW9uIiwiY3JlYXRlLWNsaWVudCIsIm1hbmFnZS11c2VycyIsInF1ZXJ5LXJlYWxtcyIsInZpZXctYXV0aG9yaXphdGlvbiIsInF1ZXJ5LWNsaWVudHMiLCJxdWVyeS11c2VycyIsIm1hbmFnZS1ldmVudHMiLCJtYW5hZ2UtcmVhbG0iLCJ2aWV3LWV2ZW50cyIsInZpZXctdXNlcnMiLCJ2aWV3LWNsaWVudHMiLCJtYW5hZ2UtYXV0aG9yaXphdGlvbiIsIm1hbmFnZS1jbGllbnRzIiwicXVlcnktZ3JvdXBzIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0b20ifQ.NCFiSW3Tt7qQCtE8g46kLg-oSqKiDseg4NCwV1kVPoD5yFa9XunooVE3eO1XgKACb_FFzrxEMYfmStpvypI7VFu-XO5ULkrbXElhDtMmVbEn-aqNILHs_h_Ewo1JdCa-gNL9zav5QhmcwmIUpNYsDsQxm-bN86JgQO2f8ZJ497K6DpPFnIrhd0eT0fa4iw7Tx64PdIDUPXqqYrR2nh0P-D0dkkVTSu-EI14uuwwClYy5Pq9EeKfX9M8SqUp81gprhty-9PneDcFjBpEgFRCfFhecSBn0_c1urlx5QTbN96PnCWlH2t-aGLfRHD8oJcv-xztHt02Zhy-L2B3z-bCfSQ",
-  "id_token_encoded": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTA2MTk3NzQsImlhdCI6MTU5MDYxOTcxNCwiaXNzIjoiaHR0cDovLzE5Mi4xNjguMS4xMDo4MDgxL2F1dGgvcmVhbG1zL21hc3RlciIsImF1ZCI6WyJtYXN0ZXItcmVhbG0iLCJhY2NvdW50Il0sInN1YiI6IjM4YjRhMjkwLTUzMzItNGM0Yy1iYjhmLTQ2ZWIyODI2YzdlYSIsIm5hbWUiOiJUaG9tYXMgTGVwbHVzIiwiZ2l2ZW5fbmFtZSI6IlRob21hcyIsImZhbWlseV9uYW1lIjoiTGVwbHVzIn0.u4otizxDCTxbX4mSYypvC-fzrnZri12I1uQrcc-wv3Y"
+  "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSl...",
+  "id_token_encoded": "eyJhbGciOiJIUzI1NiIsInR5cCI6Ikwv3Y..."
 }
 ```
 
@@ -98,11 +98,11 @@ reserved characters ('&', '?', '/' etc.).
 
 ### Using environment variables
 
-You can pass the parameters to the docker container using environment
+You can pass the parameters to the Docker container using environment
 variales like this:
 
 ```bash
-docker run -i -e 'oidc_client_id=id' -e 'oidc_client_secret=secret' -e 'oidc_discovery=http://192.168.0.1:8081/realms/master/.well-known/openid-configuration' -e 'oidc_redirect_uri=http://localhost:8080/login' -p 8080:80 leplusorg/openid-connect-provider-debugger
+docker run -i -e 'oidc_client_id=id' -e 'oidc_client_secret=secret' -e 'oidc_discovery=http://192.168.0.1:8081/realms/master/.well-known/openid-configuration' -e 'oidc_redirect_uri=http://localhost:8080/login' -p 127.0.0.1:8080:80 leplusorg/openid-connect-provider-debugger
 ```
 
 See section "Parameters" below for a description of each parameter.
@@ -112,7 +112,7 @@ the authentication flow.
 
 ## Parameters
 
-Settings are passed to the docker image using environment variables
+Settings are passed to the Docker image using environment variables
 (e.g. using the -e command-line option) or directly to NGINX using URL
 parameters.
 
@@ -127,7 +127,7 @@ Default: none
 ### oidc_client_secret
 
 Description: the OpenID Connect Client Secret (WARNING: this sensitive
-value will appear in the logs of the docker so please do not share
+value will appear in the logs of the Docker so please do not share
 your logs without redacting this value).
 
 Mandatory: yes
@@ -207,7 +207,7 @@ Note: `/debug`, `/login` and `/logout` share all the same code. `/debug`
 and `/login` behave absolutely identical, while `/logout` behaves
 differently because of the used OIDC lua library.
 
-## Test
+## Testing
 
 To test the debugger (or any other Relying Party), you can use JBoss
 Keycloak as a local OpenID Connect Provider.
@@ -216,15 +216,29 @@ Launch Keycloak using the following command (choosing the desired
 username and password):
 
 ```bash
-docker run -i -e 'KEYCLOAK_ADMIN=admin' -e 'KEYCLOAK_ADMIN_PASSWORD=admin' -p 8081:8080 quay.io/keycloak/keycloak:latest start-dev
+docker run -i -e 'KC_BOOTSTRAP_ADMIN_USERNAME=admin' -e 'KC_BOOTSTRAP_ADMIN_PASSWORD=admin' -p 0.0.0.0:8081:8080 quay.io/keycloak/keycloak:latest start-dev
 ```
 
-Then go to the Keycloak admin console at
+Here we use the IP address `0.0.0.0` to expose Keycloak on both
+`localhost` (`127.0.0.0.1`) and on your machine's public IP because we
+will need to use that public IP to access it from the
+openid-connect-provider-debugger Docker instance. We cannot use
+`localhost` because it would be interpreted by the
+openid-connect-provider-debugger instance as referring to itself
+instead of the `localhost` of the host where Keycloak's port is
+mapped. **If your host is running a firewall (as it should), this means
+that you probably need to allow incoming connections to Keycloak's
+port (`8081` in our example) on your public IP.** Ideally your
+firewall should let you allow only connection from and to the same
+public IP so that you don't expose Keycloak to your whole local
+network.
+
+Next go to the Keycloak's admin console at
 <http://localhost:8081/admin/master/console/#/master/clients>
 and authenticate using the username and password chosen in the above
 command.
 
-Click the "Create" button to create a new client. Choose a client ID
+Click the "Create client" button to create a new client. Choose a client ID
 and click "Next". On the next screen, toggle on the Client
 authentication then click Next again. Then on the
 final screen you need to provide the "Valid Redirect URIs". Put here
@@ -237,10 +251,10 @@ details). The client ID is the value that you just chose when creating
 the client in Keycloak. The client secret is the value that you copied
 from the Credentials tab. The OpenID Connect Discovery URL will be
 <http://192.168.0.1:8081/realms/master/.well-known/openid-configuration>
-where you need to replace the IP address by your local machine network
-address. You need to use an IP address that works from inside the
-debugger docker container (for the debugger to be able to connect to
-the OP to get the discovery metadata and later retrieve the
+where you need to replace the IP address `192.168.0.1` by your local
+machine network address. You need to use an IP address that works from
+inside the debugger Docker container (for the debugger to be able to
+connect to the OP to get the discovery metadata and later retrieve the
 tokens). This is why you can't use `localhost` or `127.0.0.1` which
 the debugger would interpret as itself instead of the provider.
 
@@ -296,11 +310,13 @@ Connect implementation comes from
 
 If all you need is to do a simple test and you do not need to see the
 details of each HTTP request and response, you can use this online
-OIDC debugger: <https://oidcdebugger.com>. Its source code is available
-at <https://github.com/nbarbettini/oidc-debugger>.
+[OIDC debugger](https://oidcdebugger.com) with the corresponding
+[source code](https://github.com/nbarbettini/oidc-debugger).
+
+Auth0 also provides a web-hosted [OpenID Connect Playground](https://openidconnect.net).
 
 Another alternative is the official OpenID Foundation certification
 tests that can be run online at
 <https://op.certification.openid.net:60000> and
-<https://rp.certification.openid.net:8080>, the source code being
-available at <https://github.com/openid-certification/oidctest>.
+<https://rp.certification.openid.net:8080>, with the corresponding
+[source code](https://github.com/openid-certification/oidctest).
