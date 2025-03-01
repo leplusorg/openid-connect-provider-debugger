@@ -1,5 +1,5 @@
 # checkov:skip=CKV_DOCKER_3
-FROM openresty/openresty:1.25.3.2-alpine-fat@sha256:aa8ea52fa35a296558aed8b392fb39d575e39dd4a7717fa44f1fd6fc09c1185d
+FROM openresty/openresty:1.27.1.1-alpine-fat@sha256:aa8ea52fa35a296558aed8b392fb39d575e39dd4a7717fa44f1fd6fc09c1185d
 
 ARG LUA_RESTY_OPENIDC_VERSION="1.7.6"
 
