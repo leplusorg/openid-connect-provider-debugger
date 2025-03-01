@@ -29,7 +29,7 @@ should accept (<http://localhost:8080/login> in our example below).
 ### Using the web UI
 
 Once your have provided and gathered the above information, run the
-following docker:
+following Docker command:
 
 ```bash
 docker run -i -p 127.0.0.1:8080:80 leplusorg/openid-connect-provider-debugger
@@ -43,7 +43,7 @@ flow. Remember that if you are already signed in, you may go through
 the authentication without any prompt. If you authenticate
 successfully, you should see a JSON document containing all the
 information received by the debugger from the OP. You can find more
-details (including the raw tokens) in the logs printed by the docker
+details (including the raw tokens) in the logs printed by the Docker
 container.
 
 A successful sign in would result in the display of a JSON document like this one:
@@ -98,7 +98,7 @@ reserved characters ('&', '?', '/' etc.).
 
 ### Using environment variables
 
-You can pass the parameters to the docker container using environment
+You can pass the parameters to the Docker container using environment
 variales like this:
 
 ```bash
@@ -112,7 +112,7 @@ the authentication flow.
 
 ## Parameters
 
-Settings are passed to the docker image using environment variables
+Settings are passed to the Docker image using environment variables
 (e.g. using the -e command-line option) or directly to NGINX using URL
 parameters.
 
@@ -127,7 +127,7 @@ Default: none
 ### oidc_client_secret
 
 Description: the OpenID Connect Client Secret (WARNING: this sensitive
-value will appear in the logs of the docker so please do not share
+value will appear in the logs of the Docker so please do not share
 your logs without redacting this value).
 
 Mandatory: yes
@@ -219,7 +219,21 @@ username and password):
 docker run -i -e 'KC_BOOTSTRAP_ADMIN_USERNAME=admin' -e 'KC_BOOTSTRAP_ADMIN_PASSWORD=admin' -p 0.0.0.0:8081:8080 quay.io/keycloak/keycloak:latest start-dev
 ```
 
-Then go to the Keycloak admin console at
+Here we use the IP address `0.0.0.0` to expose Keycloak on both
+`localhost` (`127.0.0.0.1`) and on your machine's public IP because we
+will need to use that public IP to access it from the
+openid-connect-provider-debugger Docker instance. We cannot use
+`localhost` because it would be interpreted by the
+openid-connect-provider-debugger instance as referring to itself
+instead of the `localhost` of the host where Keycloak's port is
+mapped. **If your host is running a firewall (as it should), this means
+that you probably need to allow incoming connections to Keycloak's
+port (`8081` in our example) on your public IP.** Ideally your
+firewall should let you allow only connection from and to the same
+public IP so that you don't expose Keycloak to your whole local
+network.
+
+Next go to the Keycloak's admin console at
 <http://localhost:8081/admin/master/console/#/master/clients>
 and authenticate using the username and password chosen in the above
 command.
@@ -239,7 +253,7 @@ from the Credentials tab. The OpenID Connect Discovery URL will be
 <http://192.168.0.1:8081/realms/master/.well-known/openid-configuration>
 where you need to replace the IP address `192.168.0.1` by your local
 machine network address. You need to use an IP address that works from
-inside the debugger docker container (for the debugger to be able to
+inside the debugger Docker container (for the debugger to be able to
 connect to the OP to get the discovery metadata and later retrieve the
 tokens). This is why you can't use `localhost` or `127.0.0.1` which
 the debugger would interpret as itself instead of the provider.
