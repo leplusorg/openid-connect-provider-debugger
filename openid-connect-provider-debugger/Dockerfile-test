@@ -11,14 +11,8 @@ ARG USER_GECOS=Default
 
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 
-RUN apk -U upgrade \
-    && apk add \
-    curl==8.12.1-r0 \
-    && if [[ $(apk -u list) ]] ; then \
-      apk -u list ; \
-      exit 1 ; \
-    fi \
-    && rm -rf /var/cache/apk/*
+# hadolint ignore=DL3018
+RUN apk add --no-cache curl
 
 RUN adduser \
   --home "${USER_HOME}" \

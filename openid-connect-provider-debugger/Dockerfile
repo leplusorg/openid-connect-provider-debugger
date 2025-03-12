@@ -9,7 +9,7 @@ HEALTHCHECK CMD ["/usr/bin/curl", "-i", "-s", "-S", "-f", "http://localhost"]
 
 COPY nginx.conf.patch /usr/local/openresty/nginx/conf/
 
-# hadolint ignore=DL4006
+# hadolint ignore=DL3019
 RUN apk -U upgrade \
     && apk add \
     curl=8.12.1-r0 \
@@ -18,9 +18,15 @@ RUN apk -U upgrade \
       apk -u list ; \
       exit 1 ; \
     fi \
-    && rm -rf /var/cache/apk/* \
-    && /usr/local/openresty/luajit/bin/luarocks install lua-resty-openidc --pin "${LUA_RESTY_OPENIDC_VERSION}" \
-    && patch /usr/local/openresty/nginx/conf/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf.patch \
+    && rm -rf /var/cache/apk/*
+
+RUN luarocks install lua-resty-openidc --pin "${LUA_RESTY_OPENIDC_VERSION}" \
+    && IFS=$'\n\t' if luarocks list --outdated | grep -q -e '^lua-resty-openidc$' ; then \
+      luarocks list --outdated ; \
+      exit 1 ; \
+    fi
+
+RUN patch /usr/local/openresty/nginx/conf/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf.patch \
     && rm -f /usr/local/openresty/nginx/conf/nginx.conf.patch
 
 COPY default.conf /etc/nginx/conf.d/
