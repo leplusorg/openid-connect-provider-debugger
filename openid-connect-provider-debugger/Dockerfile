@@ -3,7 +3,7 @@ FROM openresty/openresty:1.27.1.1-alpine-fat@sha256:aa8ea52fa35a296558aed8b392fb
 
 ARG LUA_RESTY_OPENIDC_VERSION="1.7.6"
 
-SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
+SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 
 HEALTHCHECK CMD ["/usr/bin/curl", "-i", "-s", "-S", "-f", "http://localhost"]
 

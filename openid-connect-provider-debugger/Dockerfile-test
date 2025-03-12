@@ -9,7 +9,7 @@ ARG USER_HOME=/home/default
 ARG USER_ID=1000
 ARG USER_GECOS=Default
 
-SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
+SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 
 RUN apk -U upgrade \
     && apk add \
@@ -34,4 +34,4 @@ USER "${USER_NAME}"
 WORKDIR "${HOME}"
 
 # sleep 60s to make sure that container survived its own healthcheck
-CMD ["/bin/bash", "-euo", "pipefail", "-c", "/bin/sleep 60 ; /usr/bin/curl -i -s -S -f http://openid-connect-provider-debugger"]
+CMD ["/bin/ash", "-euo", "pipefail", "-c", "/bin/sleep 60 ; /usr/bin/curl -i -s -S -f http://openid-connect-provider-debugger"]
