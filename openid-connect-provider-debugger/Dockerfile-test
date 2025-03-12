@@ -9,10 +9,16 @@ ARG USER_HOME=/home/default
 ARG USER_ID=1000
 ARG USER_GECOS=Default
 
-# hadolint ignore=DL3018
-RUN apk update \
- && apk --no-cache add curl \
- && rm -rf /var/cache/apk/*
+SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
+
+RUN apk -U upgrade \
+    && apk add \
+    curl==8.12.1-r0 \
+    && if [[ $(apk -u list) ]] ; then \
+      apk -u list ; \
+      exit 1 ; \
+    fi \
+    && rm -rf /var/cache/apk/*
 
 RUN adduser \
   --home "${USER_HOME}" \
@@ -28,4 +34,4 @@ USER "${USER_NAME}"
 WORKDIR "${HOME}"
 
 # sleep 60s to make sure that container survived its own healthcheck
-CMD ["/bin/sh", "-c", "/bin/sleep 60 ; /usr/bin/curl -i -s -S -f http://openid-connect-provider-debugger"]
+CMD ["/bin/bash", "-euo", "pipefail", "-c", "/bin/sleep 60 ; /usr/bin/curl -i -s -S -f http://openid-connect-provider-debugger"]

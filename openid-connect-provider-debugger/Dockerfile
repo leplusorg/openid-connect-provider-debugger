@@ -3,19 +3,25 @@ FROM openresty/openresty:1.27.1.1-alpine-fat@sha256:aa8ea52fa35a296558aed8b392fb
 
 ARG LUA_RESTY_OPENIDC_VERSION="1.7.6"
 
-HEALTHCHECK CMD ["/usr/bin/curl", "-i", "-s", "-S", "-f", "http://localhost"]
+SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
 
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+HEALTHCHECK CMD ["/usr/bin/curl", "-i", "-s", "-S", "-f", "http://localhost"]
 
 COPY nginx.conf.patch /usr/local/openresty/nginx/conf/
 
-# hadolint ignore=DL3018,DL4006
-RUN apk update \
- && apk --no-cache add curl patch \
- && rm -rf /var/cache/apk/* \
- && /usr/local/openresty/luajit/bin/luarocks install lua-resty-openidc --pin "${LUA_RESTY_OPENIDC_VERSION}" \
- && patch /usr/local/openresty/nginx/conf/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf.patch \
- && rm -f /usr/local/openresty/nginx/conf/nginx.conf.patch
+# hadolint ignore=DL4006
+RUN apk -U upgrade \
+    && apk add \
+    curl=8.12.1-r0 \
+    patch=2.7.6-r10 \
+    && if [[ $(apk -u list) ]] ; then \
+      apk -u list ; \
+      exit 1 ; \
+    fi \
+    && rm -rf /var/cache/apk/* \
+    && /usr/local/openresty/luajit/bin/luarocks install lua-resty-openidc --pin "${LUA_RESTY_OPENIDC_VERSION}" \
+    && patch /usr/local/openresty/nginx/conf/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf.patch \
+    && rm -f /usr/local/openresty/nginx/conf/nginx.conf.patch
 
 COPY default.conf /etc/nginx/conf.d/
 
