@@ -5,6 +5,8 @@ ARG LUA_RESTY_OPENIDC_VERSION="1.7.6"
 
 HEALTHCHECK CMD ["/usr/bin/curl", "-i", "-s", "-S", "-f", "http://localhost"]
 
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
 COPY nginx.conf.patch /usr/local/openresty/nginx/conf/
 
 # hadolint ignore=DL3018,DL4006
