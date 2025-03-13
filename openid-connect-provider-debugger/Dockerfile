@@ -18,6 +18,7 @@ RUN apk -U upgrade \
       apk -u list ; \
       exit 1 ; \
     fi \
+    && apk cache clean \
     && rm -rf /var/cache/apk/*
 
 # We let lua-resty-session get pulled transitively to ensure compatibility
