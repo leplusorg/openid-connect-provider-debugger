@@ -51,7 +51,7 @@ A successful sign in would result in the display of a JSON document like this on
 ```json
 {
   "options": {
-    "client_id": "id",
+    "client_id": "debugger",
     "discovery": "http://192.168.0.1:8081/realms/master/.well-known/openid-configuration",
     "redirect_uri": "http://localhost:8080/login",
     "ssl_verify": "no",
@@ -89,7 +89,7 @@ You can use <https://jwt.io> to decode the access token.
 
 If you prefer to skip the UI, you can pass directly the required
 values as URL parameters using the following syntax:
-<http://localhost:8080/debug?oidc_client_id=id&oidc_client_secret=secret&oidc_discovery=http%3A%2F%2F192.168.0.1%3A8081%2Frealms%2Fmaster%2F.well-known%2Fopenid-configuration&oidc_redirect_uri=http://localhost:8080/login>
+<http://localhost:8080/debug?oidc_client_id=debugger&oidc_client_secret=secret&oidc_discovery=http%3A%2F%2F192.168.0.1%3A8081%2Frealms%2Fmaster%2F.well-known%2Fopenid-configuration&oidc_redirect_uri=http://localhost:8080/login>
 
 See section "Parameters" below for a description of each parameter.
 
@@ -102,7 +102,7 @@ You can pass the parameters to the Docker container using environment
 variales like this:
 
 ```bash
-docker run -i -e 'oidc_client_id=id' -e 'oidc_client_secret=secret' -e 'oidc_discovery=http://192.168.0.1:8081/realms/master/.well-known/openid-configuration' -e 'oidc_redirect_uri=http://localhost:8080/login' -p 127.0.0.1:8080:80 leplusorg/openid-connect-provider-debugger
+docker run -i -e 'oidc_client_id=debugger' -e 'oidc_client_secret=secret' -e 'oidc_discovery=http://192.168.0.1:8081/realms/master/.well-known/openid-configuration' -e 'oidc_redirect_uri=http://localhost:8080/login' -p 127.0.0.1:8080:80 leplusorg/openid-connect-provider-debugger
 ```
 
 See section "Parameters" below for a description of each parameter.
@@ -238,9 +238,9 @@ Next go to the Keycloak's admin console at
 and authenticate using the username and password chosen in the above
 command.
 
-Click the "Create client" button to create a new client. Choose a client ID
-and click "Next". On the next screen, toggle on the Client
-authentication then click Next again. Then on the
+Click the "Create client" button to create a new client. Choose a
+client ID (e.g. "debugger") and click "Next". On the next screen,
+toggle on the Client authentication then click Next again. Then on the
 final screen you need to provide the "Valid Redirect URIs". Put here
 the value <http://localhost:8080/*> assuming that you will be running
 the debugger on port 8080 (see "Run" section above for details). Click
