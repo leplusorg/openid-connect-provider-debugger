@@ -5,7 +5,7 @@ ARG LUA_RESTY_OPENIDC_VERSION="1.8.0-1"
 
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 
-HEALTHCHECK CMD ["/usr/bin/curl", "-i", "-s", "-S", "-f", "http://localhost"]
+HEALTHCHECK CMD ["/usr/bin/curl", "-ifsSL", "http://localhost"]
 
 COPY nginx.conf.patch /usr/local/openresty/nginx/conf/
 

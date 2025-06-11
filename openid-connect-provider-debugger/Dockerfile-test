@@ -28,4 +28,4 @@ USER "${USER_NAME}"
 WORKDIR "${HOME}"
 
 # sleep 60s to make sure that container survived its own healthcheck
-CMD ["/bin/ash", "-euo", "pipefail", "-c", "/bin/sleep 60 ; /usr/bin/curl -i -s -S -f http://openid-connect-provider-debugger"]
+CMD ["/bin/ash", "-euo", "pipefail", "-c", "/bin/sleep 60 ; /usr/bin/curl -ifsSL http://openid-connect-provider-debugger"]
