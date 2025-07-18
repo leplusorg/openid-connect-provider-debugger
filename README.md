@@ -1,6 +1,6 @@
 # OpenID Connect provider debugger
 
-A docker image to test and troubleshoot OpenID Connect (OIDC)
+A Docker image to test and troubleshoot OpenID Connect (OIDC)
 Providers (OP). This containers provides a minimalist Relying Party
 (RP) with verbose logs enabled including all HTTP requests and
 responses. Used in conjuction with the network logs of your web
@@ -174,7 +174,7 @@ Default: none.
 
 ### page_content_type
 
-Description: the content type of the resulting json (e.g. `application/json`).
+Description: the content type of the resulting JSON (e.g. `application/json`).
 E.g. for cypress tests you might want to set this to `text/html`.
 Note: this does not change the content of the result only the content-type header.
 
