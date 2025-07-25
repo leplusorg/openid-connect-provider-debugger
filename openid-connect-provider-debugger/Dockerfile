@@ -12,7 +12,7 @@ COPY nginx.conf.patch /usr/local/openresty/nginx/conf/
 # hadolint ignore=DL3019
 RUN apk -U upgrade \
     && apk add \
-    curl=8.12.1-r0 \
+    curl=8.12.1-r1 \
     patch=2.7.6-r10 \
     && if apk -u list | grep -q -e . ; then \
       apk -u list ; \
