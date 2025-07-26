@@ -9,8 +9,6 @@ services:
   openid-connect-provider-debugger:
     build:
       context: .
-      args:
-        LUA_RESTY_OPENIDC_VERSION: ''
       dockerfile: Dockerfile
     environment:
       - oidc_client_id=kbyuFDidLLm280LIwVFiazOqjO3ty8KH
