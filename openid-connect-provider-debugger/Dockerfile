@@ -22,7 +22,11 @@ RUN apk -U upgrade \
     && rm -rf /var/cache/apk/*
 
 # We let lua-resty-session get pulled transitively to ensure compatibility
-RUN luarocks install lua-resty-openidc --pin "${LUA_RESTY_OPENIDC_VERSION}" \
+RUN if [ -z "${LUA_RESTY_OPENIDC_VERSION}" ]; then \
+      luarocks install lua-resty-openidc ; \
+    else \
+      luarocks install lua-resty-openidc --pin "${LUA_RESTY_OPENIDC_VERSION}" ; \
+    fi \
     && if luarocks list --outdated | grep -q -e '^lua-resty-openidc$' ; then \
       luarocks list --outdated ; \
       exit 1 ; \
