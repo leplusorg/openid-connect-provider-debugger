@@ -5,7 +5,15 @@ updates:
     directory: "/openid-connect-provider-debugger"
     schedule:
       interval: "daily"
+    cooldown:
+      default-days: 7
+    commit-message:
+      prefix: chore(dev-deps)
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "daily"
+    cooldown:
+      default-days: 7
+    commit-message:
+      prefix: chore(ci-deps)
