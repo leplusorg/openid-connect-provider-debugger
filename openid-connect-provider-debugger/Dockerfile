@@ -14,8 +14,7 @@ RUN apk -U upgrade \
     && apk add \
     curl=8.12.1-r1 \
     patch=2.7.6-r10 \
-    && if apk -u list | grep -q -e . ; then \
-      apk -u list ; \
+    && if apk -u list | tee -a /dev/stderr | grep -q -e . ; then \
       exit 1 ; \
     fi \
     && apk cache clean \
@@ -27,8 +26,7 @@ RUN if [ -z "${LUA_RESTY_OPENIDC_VERSION}" ]; then \
     else \
       luarocks install lua-resty-openidc --pin "${LUA_RESTY_OPENIDC_VERSION}" ; \
     fi \
-    && if luarocks list --outdated | grep -q -e '^lua-resty-openidc$' ; then \
-      luarocks list --outdated ; \
+    && if luarocks list --outdated  | tee -a /dev/stderr | grep -q -e '^lua-resty-openidc$' ; then \
       exit 1 ; \
     fi
 
