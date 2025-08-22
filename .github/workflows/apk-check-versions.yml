@@ -17,6 +17,6 @@ jobs:
           docker run --pull always -t --user root "leplusorg/${GITHUB_REPOSITORY#*/}:main" sh -c '
             apk update
             if apk -u list | tee -a /dev/stderr | grep -q -e . ; then
-              exit 1 ;
+              exit 1
             fi
           '
