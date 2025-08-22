@@ -1,0 +1,21 @@
+name: Luarocks Check Versions
+
+on:
+  schedule:
+    - cron: "0 0 * * 0"
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check the versions
+        shell: bash
+        run: |
+          docker run --pull always -t --user root "leplusorg/${GITHUB_REPOSITORY#*/}:main" sh -c '
+            if luarocks list --outdated  | tee -a /dev/stderr | grep -q -e '"'"'^lua-resty-openidc$'"'"' ; then \
+              exit 1 ;
+            fi
+          '
