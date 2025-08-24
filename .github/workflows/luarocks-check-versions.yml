@@ -1,3 +1,4 @@
+---
 name: Luarocks Check Versions
 
 on:
@@ -13,9 +14,4 @@ jobs:
     steps:
       - name: Check the versions
         shell: bash
-        run: |
-          docker run --pull always -t --user root --entrypoint /bin/sh "leplusorg/${GITHUB_REPOSITORY#*/}:main" -c '
-            if luarocks list --outdated  | tee -a /dev/stderr | grep -q -e " < " ; then
-              exit 1
-            fi
-          '
+        run: docker run --pull always -t --user root --entrypoint /bin/sh "leplusorg/${GITHUB_REPOSITORY#*/}:main" -c 'luarocks list --outdated | tee -a /dev/stderr | grep -q -e " < " && exit 1'
