@@ -10,11 +10,11 @@ HEALTHCHECK CMD ["/usr/bin/curl", "-ifsSL", "http://localhost"]
 COPY nginx.conf.patch /usr/local/openresty/nginx/conf/
 
 # hadolint ignore=DL3019
-RUN apk -U upgrade \
-    && apk add \
+RUN apk upgrade --no-cache \
+    && apk add --no-cache \
     curl=8.12.1-r1 \
     patch=2.7.6-r10 \
-    && apk cache clean \
+    && apk cache --no-cache clean \
     && rm -rf /var/cache/apk/*
 
 # We let lua-resty-session get pulled transitively to ensure compatibility
