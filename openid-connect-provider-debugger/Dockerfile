@@ -1,5 +1,5 @@
-# checkov:skip=CKV_DOCKER_3
-# trivy:ignore:AVD-DS-0002
+# checkov:skip=CKV_DOCKER_3: [Missing USER]: inherited from parent image
+# trivy:ignore:AVD-DS-0002: [Missing USER]: inherited from parent image
 FROM openresty/openresty:1.27.1.2-3-alpine-fat@sha256:eb0d368d262cc82b867d88f48b49a93ad9247436b65d459a14940d28ccd0e67b
 
 ARG LUA_RESTY_OPENIDC_VERSION="1.8.0-1"
@@ -10,7 +10,6 @@ HEALTHCHECK CMD ["/usr/bin/curl", "-ifsSL", "http://localhost"]
 
 COPY nginx.conf.patch /usr/local/openresty/nginx/conf/
 
-# hadolint ignore=DL3019
 RUN apk upgrade --no-cache \
     && apk add --no-cache \
     curl=8.12.1-r1 \
