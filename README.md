@@ -1,6 +1,6 @@
 # OpenID Connect provider debugger
 
-Docker image to test and troubleshoot OpenID Connect (OIDC)
+Multi-platform Docker image to test and troubleshoot OpenID Connect (OIDC)
 Providers (OP). This containers provides a minimalist Relying Party
 (RP) with verbose logs enabled including all HTTP requests and
 responses. Used in conjuction with the network logs of your web
