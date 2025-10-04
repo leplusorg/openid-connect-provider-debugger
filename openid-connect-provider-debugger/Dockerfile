@@ -39,7 +39,7 @@ RUN adduser \
   --gecos "${USER_GECOS}" \
   --disabled-password \
   "${USER_NAME}" \
-  chown -R "${USER_NAME}:${USER_NAME}" /var/run/openresty /usr/local/openresty/nginx/logs
+  && chown -R "${USER_NAME}:${USER_NAME}" /var/run/openresty /usr/local/openresty/nginx/logs
 
 USER "${USER_NAME}"
 
