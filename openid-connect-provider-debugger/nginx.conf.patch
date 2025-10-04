@@ -1,10 +1,12 @@
 --- /usr/local/openresty/nginx/conf/nginx.conf	2020-05-14 13:27:29.168451660 -0700
 +++ /usr/local/openresty/nginx/conf/nginx.conf	2020-05-14 13:28:29.583197857 -0700
-@@ -24,6 +24,17 @@
+@@ -24,6 +24,19 @@
 
 
  
 +error_log /dev/stderr debug;
++
++user openresty;
 +
 +env oidc_client_id;
 +env oidc_client_secret;
