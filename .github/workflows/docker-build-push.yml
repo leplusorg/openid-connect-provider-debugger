@@ -8,13 +8,16 @@ on:
     - cron: "0 0 * * 0"
   workflow_dispatch:
 
-permissions:
-  # Required by sigstore
-  id-token: write
+permissions: {}
 
 jobs:
-  build:
+  docker-build-push:
     if: ${{ ! startsWith(github.ref, 'refs/tags/') }}
+    permissions:
+      # Required to create a release
+      contents: write
+      # Required to sign the Docker image
+      id-token: write
     runs-on: ubuntu-latest
     steps:
       - name: Set REPOSITORY
@@ -67,7 +70,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
       - name: Install cosign
         if: github.ref == 'refs/heads/main'
-        uses: sigstore/cosign-installer@d58896d6a1865668819e1d91763c7751a165e159 # v3.9.2
+        uses: sigstore/cosign-installer@d7543c93d881b35a8faa02e8e3605f69b7a1ce62 # v3.10.0
       - name: Sign the Docker image
         if: github.ref == 'refs/heads/main'
         working-directory: ${{ env.IMAGE }}
@@ -95,7 +98,7 @@ jobs:
           fi
       - name: Check if release already exists
         if: env.VERSION != ''
-        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8.0.0
         id: check-release
         with:
           script: |
@@ -123,6 +126,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         with:
-          name: ${{ env.VERSION }}
+          release_name: ${{ env.VERSION }}
           tag_name: v${{ env.VERSION }}
-          generate_release_notes: true

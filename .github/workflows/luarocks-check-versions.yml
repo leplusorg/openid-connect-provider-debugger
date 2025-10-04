@@ -9,7 +9,7 @@ on:
 permissions: {}
 
 jobs:
-  check:
+  luarocks-check-versions:
     runs-on: ubuntu-latest
     steps:
       - name: Check the versions

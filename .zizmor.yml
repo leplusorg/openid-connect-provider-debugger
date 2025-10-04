@@ -1,0 +1,17 @@
+---
+rules:
+  forbidden-uses:
+    config:
+      allow:
+        - Azure/*
+        - actions/*
+        - aws-actions/*
+        - docker/*
+        - github/*
+        - google-github-actions/*
+        - google/*
+        - googleapis/*
+        - microsoft/*
+        - ossf/*
+        - sigstore/*
+        - super-linter/super-linter
