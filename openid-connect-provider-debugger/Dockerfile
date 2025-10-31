@@ -1,4 +1,4 @@
-FROM openresty/openresty:1.27.1.2-4-alpine-fat@sha256:e93c5ab42fb6c7a882418c2bad0b39b566759f88c3fdd62f97264b621b6cba80
+FROM openresty/openresty:1.27.1.2-5-alpine-fat@sha256:93ef9740bc88601961162153605ba67e545b73ee813aa8fedc27cbffc106bea2
 
 ARG LUA_RESTY_OPENIDC_VERSION="1.8.0-1"
 ARG USER_NAME=openresty
