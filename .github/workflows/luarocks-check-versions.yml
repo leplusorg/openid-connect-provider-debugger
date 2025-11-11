@@ -8,6 +8,10 @@ on:
 
 permissions: {}
 
+defaults:
+  run:
+    working-directory: openid-connect-provider-debugger
+
 jobs:
   luarocks-check-versions:
     runs-on: ubuntu-latest
@@ -17,4 +21,13 @@ jobs:
         run: |
           set -euo pipefail
           IFS=$'\n\t'
-          docker run --pull always -t --user root --entrypoint /bin/sh "leplusorg/${GITHUB_REPOSITORY#*/}:main" -c 'if luarocks list --outdated | tee -a /dev/stderr | grep -q -e " < "; then exit 1; fi'
+	  rc=0
+          \sudo apt install -y luarocks
+          \lua -e 'dofile("/tmp/openid-connect-provider-debugger-0.0.0.rockspec"); for _, dep in ipairs(dependencies) do local package, version = dep:match("^(.+)%s*==%s*(.+)$"); if package and version then print(package .. " " .. version) end end' | while read package current_version ; do
+            latest_version="$(\luarocks search "${package}" --porcelain | \head -n 1 | \cut -f 2)"
+            if [ "${current_version}" != "${latest_version}" ]; then
+              echo "${package} ${current_version} -> ${latest_version}"
+              rc=$((rc+1))
+            fi
+          done
+          exit ${rc}
