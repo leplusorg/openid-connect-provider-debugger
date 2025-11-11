@@ -1,6 +1,5 @@
 FROM openresty/openresty:1.27.1.2-5-alpine-fat@sha256:93ef9740bc88601961162153605ba67e545b73ee813aa8fedc27cbffc106bea2
 
-ARG LUA_RESTY_OPENIDC_VERSION="1.8.0-1"
 ARG USER_NAME=openresty
 ARG USER_HOME=/home/openresty
 ARG USER_ID=1000
@@ -19,12 +18,13 @@ RUN apk upgrade --no-cache \
     && apk cache --no-cache clean \
     && rm -rf /var/cache/apk/*
 
+COPY openid-connect-provider-debugger-0.0.0.rockspec /tmp/openid-connect-provider-debugger-0.0.0.rockspec
+
 # We let lua-resty-session get pulled transitively to ensure compatibility
-RUN if [ -z "${LUA_RESTY_OPENIDC_VERSION}" ]; then \
-      luarocks install lua-resty-openidc ; \
-    else \
-      luarocks install lua-resty-openidc --pin "${LUA_RESTY_OPENIDC_VERSION}" ; \
-    fi
+RUN lua -e 'dofile("/tmp/openid-connect-provider-debugger-0.0.0.rockspec"); for _, dep in ipairs(dependencies) do local package, version = dep:match("^(.+)%s*==%s*(.+)$"); if package and version then print(package .. " " .. version) end end' | while read package version ; do \
+      luarocks install "${package}" --pin "${version}" ; \
+    done ; \
+    rm -f /tmp/openid-connect-provider-debugger-0.0.0.rockspec
 
 RUN patch /usr/local/openresty/nginx/conf/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf.patch \
     && rm -f /usr/local/openresty/nginx/conf/nginx.conf.patch
