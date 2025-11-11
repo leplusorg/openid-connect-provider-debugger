@@ -21,7 +21,7 @@ jobs:
         run: |
           set -euo pipefail
           IFS=$'\n\t'
-	  rc=0
+          rc=0
           \sudo apt install -y luarocks
           \lua -e 'dofile("/tmp/openid-connect-provider-debugger-0.0.0.rockspec"); for _, dep in ipairs(dependencies) do local package, version = dep:match("^(.+)%s*==%s*(.+)$"); if package and version then print(package .. " " .. version) end end' | while read package current_version ; do
             latest_version="$(\luarocks search "${package}" --porcelain | \head -n 1 | \cut -f 2)"
