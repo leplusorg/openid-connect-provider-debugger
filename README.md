@@ -269,7 +269,7 @@ docker buildx imagetools inspect leplusorg/openid-connect-provider-debugger --fo
 
 Replace `linux/amd64` by the desired platform (`linux/amd64`, `linux/arm64` etc.).
 
-### Sigstore
+## Sigstore
 
 [Sigstore](https://docs.sigstore.dev) is trying to improve supply
 chain security by allowing you to verify the origin of an
