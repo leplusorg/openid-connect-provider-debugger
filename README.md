@@ -3,7 +3,7 @@
 Multi-platform Docker image to test and troubleshoot OpenID Connect (OIDC)
 Providers (OP). This containers provides a minimalist Relying Party
 (RP) with verbose logs enabled including all HTTP requests and
-responses. Used in conjuction with the network logs of your web
+responses. Used in conjunction with the network logs of your web
 browser, it provides a full picture of the OP's behavior to help
 understand and troubleshoot the OIDC flow.
 
@@ -99,7 +99,7 @@ reserved characters ('&', '?', '/' etc.).
 ### Using environment variables
 
 You can pass the parameters to the Docker container using environment
-variales like this:
+variables like this:
 
 ```bash
 docker run -i -e 'oidc_client_id=debugger' -e 'oidc_client_secret=secret' -e 'oidc_discovery=http://192.168.0.1:8081/realms/master/.well-known/openid-configuration' -e 'oidc_redirect_uri=http://localhost:8080/login' -p 127.0.0.1:8080:80 leplusorg/openid-connect-provider-debugger
