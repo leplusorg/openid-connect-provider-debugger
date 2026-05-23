@@ -13,7 +13,7 @@ COPY nginx.conf.patch /usr/local/openresty/nginx/conf/
 
 RUN apk upgrade --no-cache \
     && apk add --no-cache \
-    curl=8.14.1-r2 \
+    curl=8.19.0-r0 \
     patch=2.8-r0 \
     && apk cache --no-cache clean \
     && rm -rf /var/cache/apk/*
