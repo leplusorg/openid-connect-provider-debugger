@@ -20,7 +20,7 @@ RUN apk upgrade --no-cache \
 
 COPY openid-connect-provider-debugger-0.0.0-1.rockspec /tmp/openid-connect-provider-debugger-0.0.0-1.rockspec
 
-RUN  install --deps-only openid-connect-provider-debugger-0.0.0.rockspec \
+RUN luarocks install --deps-only /tmp/openid-connect-provider-debugger-0.0.0-1.rockspec \
     && rm -f /tmp/openid-connect-provider-debugger-0.0.0-1.rockspec
 
 RUN patch /usr/local/openresty/nginx/conf/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf.patch \
