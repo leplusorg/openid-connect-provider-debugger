@@ -18,13 +18,10 @@ RUN apk upgrade --no-cache \
     && apk cache --no-cache clean \
     && rm -rf /var/cache/apk/*
 
-COPY openid-connect-provider-debugger-0.0.0.rockspec /tmp/openid-connect-provider-debugger-0.0.0.rockspec
+COPY openid-connect-provider-debugger-0.0.0-1.rockspec /tmp/openid-connect-provider-debugger-0.0.0-1.rockspec
 
-# We let lua-resty-session get pulled transitively to ensure compatibility
-RUN luajit -e 'dofile("/tmp/openid-connect-provider-debugger-0.0.0.rockspec"); for _, dep in ipairs(dependencies) do local package, version = dep:match("^(.+)%s*==%s*(.+)$"); if package and version then print(package .. " " .. version) end end' | while read package version ; do \
-      luarocks install "${package}" --pin "${version}" ; \
-    done ; \
-    rm -f /tmp/openid-connect-provider-debugger-0.0.0.rockspec
+RUN  install --deps-only openid-connect-provider-debugger-0.0.0.rockspec \
+    && rm -f /tmp/openid-connect-provider-debugger-0.0.0-1.rockspec
 
 RUN patch /usr/local/openresty/nginx/conf/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf.patch \
     && rm -f /usr/local/openresty/nginx/conf/nginx.conf.patch

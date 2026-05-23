@@ -34,5 +34,5 @@ jobs:
               echo "${package} ${current_version} -> ${latest_version}"
               rc=$((rc+1))
             fi
-          done < <(\lua -e 'dofile("openid-connect-provider-debugger-0.0.0.rockspec"); for _, dep in ipairs(dependencies) do local package, version = dep:match("^(.+)%s*==%s*(.+)$"); if package and version then print(package .. " " .. version) end end')
+          done < <(\lua -e 'local t = dofile("luarocks.lock"); for package, version in pairs(t.dependencies) do print(package .. " " .. version) end')
           exit ${rc}
