@@ -29,7 +29,7 @@ jobs:
           rc=0
           \sudo apt install -y luarocks
           while IFS=' ' read -r package current_version ; do
-            latest_version="$(\luarocks search "${package}" --porcelain | \head -n 1 | \cut -f 2)"
+            latest_version="$(\luarocks search "${package}" --porcelain | \awk -F'\t' -v pkg="${package}" '$1 == pkg {print $2}' | \sort -Vr | \head -n 1)"
             if [ "${current_version}" != "${latest_version}" ]; then
               echo "${package} ${current_version} -> ${latest_version}"
               rc=$((rc+1))
