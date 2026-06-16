@@ -1,4 +1,4 @@
-FROM openresty/openresty:1.31.1.1-0-alpine-fat@sha256:8287b910ed042a6b349231f5f40faad9f2e3ca3304a0d64cb8fc71d3f5ea2b93
+FROM openresty/openresty:1.31.1.1-1-alpine-fat@sha256:acd832254d9c969b8039c64471118f7123c6b77a36095bee70d67dcf13ff9423
 
 ARG USER_NAME=openresty
 ARG USER_HOME=/home/openresty
