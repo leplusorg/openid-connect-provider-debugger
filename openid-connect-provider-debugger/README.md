@@ -9,4 +9,4 @@ is an OpenResty (nginx + Lua) service that echoes/inspects the OIDC flow.
 - `index.html`, `error.html` — served pages.
 - `docker-compose.test.yml` — the container test run in CI.
 
-See the [root README](../README.md) for what the tool does and how to run it.
+See the [root readme](../README.md) for what the tool does and how to run it.
