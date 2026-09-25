@@ -59,7 +59,7 @@ jobs:
         id: build
         with:
           # zizmor: ignore[template-injection] no user input
-          context: ${{ env.REPOSITORY }}
+          context: "{{defaultContext}}:${{ env.REPOSITORY }}"
           platforms: linux/amd64,linux/arm64
           pull: true
           push: true
