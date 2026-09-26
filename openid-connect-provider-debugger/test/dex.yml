@@ -1,0 +1,25 @@
+---
+# Dex configuration for the end-to-end test: a real OpenID Connect provider
+# that logs in a fixed mock user without any login form or approval screen.
+issuer: http://dex:5556/dex
+storage:
+  type: memory
+web:
+  http: 0.0.0.0:5556
+oauth2:
+  skipApprovalScreen: true
+connectors:
+  # With a single connector, Dex skips the connector selection page. The
+  # mockCallback connector always authenticates the same user
+  # (Kilgore Trout, kilgore@kilgore.trout).
+  - type: mockCallback
+    id: mock
+    name: Mock
+staticClients:
+  - id: debugger
+    name: OpenID Connect Provider Debugger
+    secret: debugger-e2e-secret
+    redirectURIs:
+      # The test client shares the debugger's network namespace, so the
+      # debugger is reachable at localhost (see docker-compose.test.yml).
+      - http://localhost/login
