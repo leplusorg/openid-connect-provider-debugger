@@ -4,15 +4,41 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-test
-    links:
-      - openid-connect-provider-debugger
+    # Share the debugger's network namespace so that the test client reaches it
+    # as http://localhost. The debugger sets its session cookie with the Secure
+    # attribute and curl only sends Secure cookies over plain HTTP to localhost.
+    network_mode: service:openid-connect-provider-debugger
+    depends_on:
+      openid-connect-provider-debugger:
+        condition: service_healthy
   openid-connect-provider-debugger:
     build:
       context: .
       dockerfile: Dockerfile
+    depends_on:
+      dex:
+        condition: service_healthy
     environment:
-      - oidc_client_id=kbyuFDidLLm280LIwVFiazOqjO3ty8KH
-      - oidc_client_secret=60Op4HFM0I8ajz0WdiStAbziZ-VFQttXuxixHHs2R7r7-CW8GR79l-mmLqMhc-Sa
-      - oidc_discovery=https://samples.auth0.com/.well-known/openid-configuration
-      - oidc_redirect_uri=http://openid-connect-provider-debugger/login
-      - oidc_ssl_verify=yes
+      - oidc_client_id=debugger
+      - oidc_client_secret=debugger-e2e-secret
+      - oidc_discovery=http://dex:5556/dex/.well-known/openid-configuration
+      - oidc_redirect_uri=http://localhost/login
+    healthcheck:
+      # same check as the image, just more frequent to keep the test short
+      interval: 5s
+  dex:
+    image: ghcr.io/dexidp/dex:v2.45.1@sha256:8499afd690c437f52301efd2b05b2455da5bd2dfc20332cd697dc9937f808462
+    command: ["dex", "serve", "/etc/dex/e2e.yml"]
+    volumes:
+      - ./test/dex.yml:/etc/dex/e2e.yml:ro
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "wget",
+          "-q",
+          "-O",
+          "/dev/null",
+          "http://localhost:5556/dex/.well-known/openid-configuration",
+        ]
+      interval: 5s
