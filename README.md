@@ -209,8 +209,19 @@ differently because of the used OIDC lua library.
 
 ## Testing
 
-To test the debugger (or any other Relying Party), you can use JBoss
-Keycloak as a local OpenID Connect Provider.
+The automated end-to-end test runs a complete login through the
+debugger against a local [Dex](https://dexidp.io/) OpenID Connect
+Provider and checks the resulting tokens and `/status` output. It is
+what runs in CI and you can run it locally from the
+`openid-connect-provider-debugger` folder:
+
+```bash
+docker compose -f docker-compose.test.yml run --build --rm sut
+docker compose -f docker-compose.test.yml down
+```
+
+To test the debugger (or any other Relying Party) manually, you can
+use JBoss Keycloak as a local OpenID Connect Provider.
 
 Launch Keycloak using the following command (choosing the desired
 username and password):

@@ -7,6 +7,7 @@ is an OpenResty (nginx + Lua) service that echoes/inspects the OIDC flow.
 - `nginx.conf.patch`, `default.conf` — nginx configuration.
 - `*.rockspec`, `luarocks.lock` — the Lua dependencies (OpenResty modules).
 - `index.html`, `error.html` — served pages.
-- `docker-compose.test.yml` — the container test run in CI.
+- `docker-compose.test.yml` — the end-to-end test run in CI (debugger + Dex).
+- `test/` — the Dex configuration and the end-to-end test script.
 
 See the [root readme](../README.md) for what the tool does and how to run it.
