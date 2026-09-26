@@ -18,7 +18,7 @@ connectors:
 staticClients:
   - id: debugger
     name: OpenID Connect Provider Debugger
-    secret: debugger-e2e-secret
+    secret: debugger-e2e-secret # checkov:skip=CKV_SECRET_6: dummy test secret
     redirectURIs:
       # The test client shares the debugger's network namespace, so the
       # debugger is reachable at localhost (see docker-compose.test.yml).
