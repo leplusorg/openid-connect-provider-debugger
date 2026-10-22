@@ -18,10 +18,16 @@ RUN apk upgrade --no-cache \
     && apk cache --no-cache clean \
     && rm -rf /var/cache/apk/*
 
-COPY openid-connect-provider-debugger-0.0.0-1.rockspec /tmp/openid-connect-provider-debugger-0.0.0-1.rockspec
+WORKDIR /tmp/luarocks
 
-RUN luarocks install --deps-only /tmp/openid-connect-provider-debugger-0.0.0-1.rockspec \
-    && rm -f /tmp/openid-connect-provider-debugger-0.0.0-1.rockspec
+COPY openid-connect-provider-debugger-0.0.0-1.rockspec luarocks.lock ./
+
+# luarocks pins every dependency (including transitive ones) to the version
+# in the luarocks.lock file found in the working directory
+RUN luarocks install --deps-only openid-connect-provider-debugger-0.0.0-1.rockspec \
+    && rm -rf /tmp/luarocks
+
+WORKDIR /
 
 RUN patch /usr/local/openresty/nginx/conf/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf.patch \
     && rm -f /usr/local/openresty/nginx/conf/nginx.conf.patch
