@@ -23,7 +23,7 @@ Connect Relying Party and logs the whole flow. See the
 - `luarocks.lock` — the pinned versions of all the Lua dependencies, including
   transitive ones. The `Dockerfile` copies it next to the rockspec, so
   `luarocks` installs exactly these versions, and the weekly `Luarocks Check
-  Versions` workflow reads it to report outdated packages. To upgrade a
+Versions` workflow reads it to report outdated packages. To upgrade a
   dependency, edit its version here.
 - `docker-compose.test.yml` — the end-to-end test run in CI: starts a
   [Dex](https://dexidp.io/) provider, the debugger configured against it, and
